@@ -6,11 +6,15 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:05:35 by maroy                                    */
-/*   Updated: 2023/10/13 16:51:05 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/14 17:03:59 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
+
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 
 #include "common.hpp"
 #include <iostream>
@@ -40,3 +44,5 @@ class Contact
         string _phone_number;
         string _darkest_secret;
 };
+
+#endif /* CONTACT_HPP */

@@ -6,11 +6,11 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/14 16:46:25 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/14 18:00:00 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
-NAME = EmploiDeVosRêves
+NAME = BONJOUR_ICI_LE_CERVEAU
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
 CC = c++

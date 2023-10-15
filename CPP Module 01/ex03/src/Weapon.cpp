@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   PhoneBook.hpp                                     ██   ██      ██        */
+/*   Weapon.cpp                                        ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/09/02 20:05:38 by maroy                                    */
-/*   Updated: 2023/10/14 17:04:12 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 18:17:59 by maroy                                    */
+/*   Updated: 2023/10/14 18:29:55 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#pragma once
+#include "../inc/Weapon.hpp"
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+Weapon::Weapon(string type) {
+	this->_type = type;
+}
 
-#include "common.hpp"
-#include <iostream>
-#include "Contact.hpp"
+Weapon::~Weapon(){}
 
-class PhoneBook
-{
-    public:
-        PhoneBook();
-		~PhoneBook();
-		void add_info();
-		void print_info();
-		void search_info();
-    private:
-        Contact _contacts[8];
-        int index;
-};
+// #=- Getters -=# //
+string	Weapon::getType(void) {
+	return (this->_type);
+}
 
-#endif /* PHONEBOOK_HPP */
+// #=- Setters -=# //
+void 	Weapon::setType(string type) {
+	this->_type = type;
+}

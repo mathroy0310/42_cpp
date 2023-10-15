@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   PhoneBook.hpp                                     ██   ██      ██        */
+/*   Weapon.hpp                                        ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/09/02 20:05:38 by maroy                                    */
-/*   Updated: 2023/10/14 17:04:12 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 18:16:47 by maroy                                    */
+/*   Updated: 2023/10/14 18:29:38 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef WEAPON_H
+# define WEAPON_H
 
 #include "common.hpp"
-#include <iostream>
-#include "Contact.hpp"
 
-class PhoneBook
+class Weapon
 {
-    public:
-        PhoneBook();
-		~PhoneBook();
-		void add_info();
-		void print_info();
-		void search_info();
-    private:
-        Contact _contacts[8];
-        int index;
+
+	public:
+
+		Weapon(string type);
+		~Weapon();
+
+		// #=- Getters -=# //
+		string		getType(void);
+		// #=- Setters -=# //
+		void			setType(string type);
+
+	private:
+
+		string		_type;
+
 };
 
-#endif /* PHONEBOOK_HPP */
+#endif // WEAPON_H

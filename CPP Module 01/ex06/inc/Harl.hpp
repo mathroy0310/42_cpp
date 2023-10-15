@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   PhoneBook.hpp                                     ██   ██      ██        */
+/*   Harl.hpp                                          ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/09/02 20:05:38 by maroy                                    */
-/*   Updated: 2023/10/14 17:04:12 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 19:33:20 by maroy                                    */
+/*   Updated: 2023/10/14 20:06:53 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef HARL_H
+# define HARL_H
 
 #include "common.hpp"
-#include <iostream>
-#include "Contact.hpp"
 
-class PhoneBook
-{
-    public:
-        PhoneBook();
-		~PhoneBook();
-		void add_info();
-		void print_info();
-		void search_info();
-    private:
-        Contact _contacts[8];
-        int index;
+class Harl{
+	
+	public:
+
+		Harl();
+		~Harl();
+
+		void  	complain( string level );
+		void	(Harl::*level_pointer[4])(void);
+
+	private:
+
+		void	debug( void );
+		void	info( void );
+		void	warning( void );
+		void	error( void );
 };
 
-#endif /* PHONEBOOK_HPP */
+#endif // HARL_H

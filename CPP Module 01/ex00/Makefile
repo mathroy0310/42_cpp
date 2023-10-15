@@ -6,11 +6,11 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/14 16:46:25 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/14 17:22:49 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
-NAME = EmploiDeVosRêves
+NAME = BraiiiiiiinnnzzzZ
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
 CC = c++
@@ -27,6 +27,9 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 # Default target
 all: directories $(BUILD_DIR)/$(NAME)
 	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
+
+debug: CPPFLAGS += -DDEBUG=1 -g
+debug: re
 
 # Create necessary directories
 directories:

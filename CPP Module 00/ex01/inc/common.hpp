@@ -1,16 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   common.hpp                                        ██   ██      ██        */
+/*   common.h                                          ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:33:48 by maroy                                    */
-/*   Updated: 2023/10/13 16:37:23 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/14 16:56:23 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
+
+#ifndef COMMON_H
+# define COMMON_H
 
 // #=- Colors -=# //
 # define BOLD "\033[1;37m"
@@ -50,3 +53,5 @@ string	get_input(string msg);
 /// @param max_index the number of contacts in the phonebook
 /// @return true or false , valid or not
 bool	is_valid_index(string input, int max_index);
+
+#endif // COMMON_H

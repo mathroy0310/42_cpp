@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   PhoneBook.hpp                                     ██   ██      ██        */
+/*   main.cpp                                          ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/09/02 20:05:38 by maroy                                    */
-/*   Updated: 2023/10/14 17:04:12 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 19:35:34 by maroy                                    */
+/*   Updated: 2023/10/14 20:31:27 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#pragma once
+#include "../inc/Harl.hpp"
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
-
-#include "common.hpp"
-#include <iostream>
-#include "Contact.hpp"
-
-class PhoneBook
+int main (int argc , char **argv)
 {
-    public:
-        PhoneBook();
-		~PhoneBook();
-		void add_info();
-		void print_info();
-		void search_info();
-    private:
-        Contact _contacts[8];
-        int index;
-};
+	if (argc != 2)
+	{
+		std::cout << ANSI_COLOR_RED"Error 🛑: Usage:  "<< argv[0] <<" [DEBUG|INFO|WARNING|ERROR]" << std::endl;
+		return (EXIT_FAILURE);
+	}
+	Harl harl;
+	harl.complain( argv[1] );
 
-#endif /* PHONEBOOK_HPP */
+	return (EXIT_SUCCESS);
+}

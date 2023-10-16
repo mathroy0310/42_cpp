@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/16 15:41:28 by maroy                                    */
-/*   Updated: 2023/10/16 16:12:28 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/16 16:53:56 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -16,18 +16,14 @@
 class Point{
 	public:
 		Point();
-		Point( Fixed x, Fixed y );
-		Point( Point const &src );
+		Point( Fixed const x, Fixed const y );
 
 		~Point();
-
-		Point	&operator=( Point const &rhs ) ;
-		
+ 		
 		Fixed	getX( void ) const;
 		Fixed	getY( void ) const;
-
-		void 	setX(Fixed x );
-		void 	setY(Fixed y );
+		
+		void	printPoint( Point const &point ) const;
 	private:
 		Fixed	const	_x;
 		Fixed	const	_y;	

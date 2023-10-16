@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/16 16:03:41 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/16 16:36:04 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -53,7 +53,14 @@ using std::string;
 using std::ostream;
 
 // #=- Local Includes -=# //
+#ifndef FIXED_H
 # include "Fixed.hpp"
+#endif
+#ifndef POINT_H
 # include "Point.hpp"
+#endif
+
+
+bool bsp( Point const a, Point const b, Point const c, Point const point);
 
 #endif // COMMON_H

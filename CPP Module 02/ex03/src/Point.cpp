@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/16 15:39:56 by maroy                                    */
-/*   Updated: 2023/10/16 16:15:23 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/16 16:54:00 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -19,30 +19,11 @@
 ///														///
 ///////////////////////////////////////////////////////////
 
-Point::Point() : _x(0), _y(0){
-	//cout << ANSI_COLOR_GREEN << "Default constructor called" << ANSI_COLOR_RESET << endl;
-}
+Point::Point() : _x(0), _y(0){}
 
-Point::Point(Fixed const x, const Fixed y) : _x(x), _y(y){
-	//cout << ANSI_COLOR_GREEN << "Constructor called" << ANSI_COLOR_RESET << endl;
-}
+Point::Point(Fixed const x, Fixed const y) : _x(x), _y(y){}
 
-Point::~Point(){
-	//cout << ANSI_COLOR_GREEN << "Destructor called" << ANSI_COLOR_RESET << endl;
-}
-
-////////////////////////////////////////////////////////////
-///														///
-///			OPERATION OVERLOAD							///
-///														///
-///////////////////////////////////////////////////////////
-
-Point &Point::operator=(Point const &rhs) {
-    // Assign x and y using non-const member functions
-    this->setX(rhs.getX());
-    this->setY(rhs.getY());
-    return (*this);
-}
+Point::~Point(){}
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -60,14 +41,10 @@ Fixed	Point::getY( void ) const {
 
 ///////////////////////////////////////////////////////////
 ///														///
-///			SETTERS										///
+///			OTHERS										///
 ///														///
 ///////////////////////////////////////////////////////////
 
-void	Point::setX(Fixed const x ){
-	(void)x;
-}
-
-void	Point::setY(Fixed const y ){
-	(void)y;
+void Point::printPoint( Point const &point ) const{
+	cout << "Point(" << point.getX() << ", " << point.getY() << ")" << endl;
 }

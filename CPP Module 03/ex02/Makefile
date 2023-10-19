@@ -6,11 +6,11 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/16 11:13:36 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/19 16:47:19 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
-NAME = EncorePlusDeCerveaux
+NAME = TravailALaChaîne
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
 CC = c++
@@ -27,12 +27,12 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 # Default target
 all: directories $(BUILD_DIR)/$(NAME)
 	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
-
-# Debug target
-debug: CPPFLAGS += -DDEBUG=1 -g
-debug: re
-	@echo "$(GREEN)$(NAME) created in debug mode !$(DEFAULT)"
 	
+# Debug target
+# debug: CPPFLAGS += -DDEBUG=1 -g
+# debug: re
+# 	@echo "$(GREEN)$(NAME) created in debug mode !$(DEFAULT)"
+
 # Create necessary directories
 directories:
 	@mkdir -p $(OBJ_DIR)

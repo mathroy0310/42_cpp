@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Fixed.hpp                                         ██   ██      ██        */
+/*   main.cpp                                          ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 20:48:57 by maroy                                    */
-/*   Updated: 2023/10/16 12:43:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/19 12:55:09 by maroy                                    */
+/*   Updated: 2023/10/19 13:26:45 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#pragma once
-#ifndef FIXED_H
-# define FIXED_H
+#include "../inc/ClapTrap.hpp"
+#include "../inc/common.hpp"
 
-class Fixed{
+int main(void)
+{
+	ClapTrap claptrap("proute");
+	while (claptrap.isAlive())
+	{
+		claptrap.attack("target");
+		claptrap.takeDamage(1);
+		claptrap.beRepaired(1);
+		claptrap.printStatus();
+	}
 
-	public:
-
-		Fixed();
-		Fixed( Fixed const & src );
-		~Fixed();
-
-		Fixed &	operator=( Fixed const & rhs );
-
-		// #=- GETTER -=# //
-		
-		int		getRawBits( void ) const;
-		// #=- SETTER -=# //
-		
-		void	setRawBits( int const raw );
-		// #=- OTHER -=# //
-
-		void	printRawBits( void ) const;
-
-	private:
-
-		int					_rawBits;
-		static const int	_fractionalBits;
-};
-
-#endif // FIXED_H
+	return (0);
+}

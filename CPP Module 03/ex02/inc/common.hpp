@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/16 11:36:45 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/19 15:07:31 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 // #endif
 
 // #=- Colors -=# //
+
 # define ANSI_COLOR_RESET "\x1b[0m"
 # define ANSI_COLOR_BLACK "\x1b[30m"
 # define ANSI_COLOR_RED "\x1b[31m"
@@ -40,14 +41,17 @@
 
 
 // #=- STD Includes -=# //
+
 # include <iostream>
 # include <string>
 
 // #=- Namespace Declarations -=# //
+
 using std::cout;
 using std::cerr;
 using std::endl;
 using std::string;
+using std::ostream;
 
 
-#endif // COMMON_H
+#endif // COMMON_HPP

@@ -1,43 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Fixed.hpp                                         ██   ██      ██        */
+/*   DiamondTrap.hpp                                   ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 20:48:57 by maroy                                    */
-/*   Updated: 2023/10/16 12:43:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/19 16:49:40 by maroy                                    */
+/*   Updated: 2023/10/19 17:00:39 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef FIXED_H
-# define FIXED_H
 
-class Fixed{
+#ifndef DIAMONDTRAP_HPP
+# define DIAMONDTRAP_HPP
+
+# include "common.hpp"
+# include "ScavTrap.hpp"
+# include "FragTrap.hpp"
+
+class DiamondTrap : public ScavTrap, public FragTrap
+{
 
 	public:
 
-		Fixed();
-		Fixed( Fixed const & src );
-		~Fixed();
+		DiamondTrap();
+		DiamondTrap( string name );
+		DiamondTrap( DiamondTrap const & src );
+		~DiamondTrap();
 
-		Fixed &	operator=( Fixed const & rhs );
+		DiamondTrap &		operator=( DiamondTrap const & rhs );
 
-		// #=- GETTER -=# //
-		
-		int		getRawBits( void ) const;
-		// #=- SETTER -=# //
-		
-		void	setRawBits( int const raw );
-		// #=- OTHER -=# //
-
-		void	printRawBits( void ) const;
+		void				whoAmI( void );
 
 	private:
+		string name;
 
-		int					_rawBits;
-		static const int	_fractionalBits;
 };
 
-#endif // FIXED_H
+
+#endif // DiamondTrap_HPP

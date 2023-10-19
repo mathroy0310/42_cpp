@@ -1,43 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Fixed.hpp                                         ██   ██      ██        */
+/*   FragTrap.hpp                                      ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 20:48:57 by maroy                                    */
-/*   Updated: 2023/10/16 12:43:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/19 14:52:04 by maroy                                    */
+/*   Updated: 2023/10/19 15:07:23 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef FIXED_H
-# define FIXED_H
 
-class Fixed{
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
 
+
+#include "common.hpp"
+# include "ClapTrap.hpp"
+
+class FragTrap: public ClapTrap{
+	
 	public:
-
-		Fixed();
-		Fixed( Fixed const & src );
-		~Fixed();
-
-		Fixed &	operator=( Fixed const & rhs );
-
-		// #=- GETTER -=# //
+		FragTrap();
+		FragTrap( string name );
+		FragTrap( FragTrap const & src );
 		
-		int		getRawBits( void ) const;
-		// #=- SETTER -=# //
+		~FragTrap();
+
+		void			printStatus( void );
+		void 			highFivesGuys( void );
 		
-		void	setRawBits( int const raw );
-		// #=- OTHER -=# //
-
-		void	printRawBits( void ) const;
-
-	private:
-
-		int					_rawBits;
-		static const int	_fractionalBits;
 };
 
-#endif // FIXED_H
+#endif // FRAGTRAP_HPP

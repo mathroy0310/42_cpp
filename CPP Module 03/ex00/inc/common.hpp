@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/16 11:36:45 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/16 12:56:51 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::string;
-
+using std::ostream;
 
 #endif // COMMON_H

@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Fixed.hpp                                         ██   ██      ██        */
+/*   ScavTrap.hpp                                      ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 20:48:57 by maroy                                    */
-/*   Updated: 2023/10/16 12:43:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/19 13:30:26 by maroy                                    */
+/*   Updated: 2023/10/19 15:07:26 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef FIXED_H
-# define FIXED_H
 
-class Fixed{
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
+#include "common.hpp"
+# include "ClapTrap.hpp"
+
+class ScavTrap: public ClapTrap{
+	
 	public:
-
-		Fixed();
-		Fixed( Fixed const & src );
-		~Fixed();
-
-		Fixed &	operator=( Fixed const & rhs );
-
-		// #=- GETTER -=# //
+		ScavTrap();
+		ScavTrap( string name );
+		ScavTrap( ScavTrap const & src );
 		
-		int		getRawBits( void ) const;
-		// #=- SETTER -=# //
+		~ScavTrap();
 		
-		void	setRawBits( int const raw );
-		// #=- OTHER -=# //
-
-		void	printRawBits( void ) const;
-
-	private:
-
-		int					_rawBits;
-		static const int	_fractionalBits;
+		void			printStatus( void );
+		void 			attack( string const & target );
+		void			guardGate( void );
 };
 
-#endif // FIXED_H
+#endif // SCAVTRAP_HPP

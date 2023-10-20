@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   DiamondTrap.hpp                                   ██   ██      ██        */
+/*   Cat.cpp                                           ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/19 16:49:40 by maroy                                    */
-/*   Updated: 2023/10/20 18:28:26 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/20 18:48:37 by maroy                                    */
+/*   Updated: 2023/10/20 19:19:37 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#pragma once
+#include "../inc/Cat.hpp"
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+Cat::Cat() {
+	setType("Cat");
+}
 
-# include "common.hpp"
-# include "ScavTrap.hpp"
-# include "FragTrap.hpp"
+Cat::Cat(Cat const & src) {
+	cout << "Cat copy constructor" << endl;
+	*this = src;
+}
 
-class DiamondTrap : public FragTrap, public ScavTrap {
-	public:
-		DiamondTrap(string name);
-		void whoAmI();
-	private:
-		string name;	
-};
+Cat::~Cat() {
+    cout << "Cat destructor" << endl;
+}
 
+Cat &Cat::operator=(Cat const & src) {
+	if (this != &src)
+		this->_type = src.getType();
+	return (*this);
+}
 
-#endif // DiamondTrap_HPP
+void Cat::makeSound() const {
+    cout << "Meow! I'm a cat." << endl;
+}

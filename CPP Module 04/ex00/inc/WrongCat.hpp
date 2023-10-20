@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   DiamondTrap.hpp                                   ██   ██      ██        */
+/*   WrongCat.hpp                                      ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/19 16:49:40 by maroy                                    */
-/*   Updated: 2023/10/20 18:28:26 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/20 19:26:10 by maroy                                    */
+/*   Updated: 2023/10/20 19:37:19 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#ifndef WRONGCAT_H
+# define WRONGCAT_H
 
-# include "common.hpp"
-# include "ScavTrap.hpp"
-# include "FragTrap.hpp"
+#include "common.hpp"
+#include "WrongAnimal.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap {
-	public:
-		DiamondTrap(string name);
-		void whoAmI();
-	private:
-		string name;	
+class WrongCat: public WrongAnimal{
+	
+	public: 
+		WrongCat();
+		WrongCat(WrongCat const & src);
+		~WrongCat();
+
+		WrongCat & operator=(WrongCat const & src);
+
+		void	makeSound() const;
 };
 
-
-#endif // DiamondTrap_HPP
+#endif // WRONGCAT_H

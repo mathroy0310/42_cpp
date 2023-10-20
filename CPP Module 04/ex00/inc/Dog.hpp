@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   DiamondTrap.hpp                                   ██   ██      ██        */
+/*   Dog.hpp                                           ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/19 16:49:40 by maroy                                    */
-/*   Updated: 2023/10/20 18:28:26 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/20 18:41:59 by maroy                                    */
+/*   Updated: 2023/10/20 19:36:10 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
 
-#ifndef DIAMONDTRAP_HPP
-# define DIAMONDTRAP_HPP
+#ifndef DOG_H	
+# define DOG_H
 
-# include "common.hpp"
-# include "ScavTrap.hpp"
-# include "FragTrap.hpp"
+#include "Animal.hpp"
+#include "common.hpp"
 
-class DiamondTrap : public FragTrap, public ScavTrap {
+class Dog : public Animal {
+
 	public:
-		DiamondTrap(string name);
-		void whoAmI();
-	private:
-		string name;	
+		Dog();
+		Dog(Dog const & src);
+		~Dog();
+
+		Dog & operator=(Dog const & src);
+		
+		 void makeSound() const;
 };
 
-
-#endif // DiamondTrap_HPP
+#endif // DOG_H

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/20 18:42:43 by maroy                                    */
-/*   Updated: 2023/10/20 19:37:04 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 12:24:57 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal{
 
 		Animal();
 		Animal(Animal const & src);
-		~Animal();
+		virtual ~Animal();
 
 		Animal & operator=(Animal const & src);
 

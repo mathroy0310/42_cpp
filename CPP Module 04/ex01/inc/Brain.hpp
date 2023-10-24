@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Zombie.hpp                                        ██   ██      ██        */
+/*   Brain.hpp                                        ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 16:53:25 by maroy                                    */
-/*   Updated: 2023/10/24 17:17:53 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/24 11:39:07 by maroy                                    */
+/*   Updated: 2023/10/24 11:47:58 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+
+#ifndef BRAIN_HPP
+# define BRAIN_HPP
 
 # include "common.hpp"
 
-class Zombie
+class Brain
 {
   public:
-	Zombie(string name);
-	~Zombie();
-	void announce(void) const;
+	Brain();
+	Brain(Brain const &src);
+	~Brain();
 
-  private:
-	string _name;
+	Brain &operator=(Brain const &src);
+	// Setters - Getters
+	string	*getIdeas( void );
+	void	setIdeas(int i, string *ideas);
+  protected:
+	string _ideas[100];
 };
 
-Zombie	*newZombie(string name);
-void	randomChump(string name);
-
-#endif // ZOMBIE_HPP
+#endif // BRAIN_HPP

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   common.h                                          ██   ██      ██        */
+/*   common.hpp                                        ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:33:48 by maroy                                    */
-/*   Updated: 2023/10/14 16:56:23 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 16:16:22 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -24,34 +24,27 @@
 # define YELLOW "\033[1;93m"
 
 // #=- STD Includes -=# //
-#include <iostream>
-#include <iomanip>
+# include <iomanip>
+# include <iostream>
 
 // #=- Namespace Declarations -=# //
-using std::cout;
-using std::cin;
-using std::getline;
-using std::end;
 using std::begin;
+using std::cin;
+using std::cout;
+using std::end;
 using std::endl;
-using std::string;
-using std::setw;
+using std::getline;
 using std::setfill;
+using std::setw;
+using std::string;
 
 // #=- Local Includes -=# //
-#include "PhoneBook.hpp"
-#include "Contact.hpp"
+# include "Contact.hpp"
+# include "PhoneBook.hpp"
 
 // #=- Prototypes -=# //
 
-/// @brief get the input from the user with getline
-/// @param msg the message the before reading the user input 
-/// @return return the input as string
 string	get_input(string msg);
-/// @brief Checks if the index user input is valid or not 
-/// @param input the input as string from the user
-/// @param max_index the number of contacts in the phonebook
-/// @return true or false , valid or not
 bool	is_valid_index(string input, int max_index);
 
 #endif // COMMON_H

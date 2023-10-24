@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:06:00 by maroy                                    */
-/*   Updated: 2023/10/14 17:03:35 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 16:29:27 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -14,51 +14,39 @@
 # include "../inc/PhoneBook.hpp"
 # include "../inc/Contact.hpp"
 
-PhoneBook::PhoneBook (){
-    this->index = 0;
-}
+const int MAX_CONTACTS = 8;
 
-PhoneBook::~PhoneBook()
-{}
+PhoneBook::PhoneBook (): _index(0){}
 
-void PhoneBook::add_info()
-{
-	int contact_index;
-	string input;
-	string name;
-	input = "";
+PhoneBook::~PhoneBook(){}
 
-	cout << GRAY << "#-- Adding a new contact -- #" << NORMAL << endl;
-	
-	if (this->index > 7)
-		cout << YELLOW << " WARNING ! Overwriting info about the first contact" << NORMAL << endl;
-	contact_index = this->index % 8;
-	input = get_input("Enter a first name : ");
-    this->_contacts[contact_index].set_first_name(input);;
-    input = get_input("Enter " + this->_contacts[contact_index].get_first_name() + "'s last name : ");
-	this->_contacts[contact_index].set_last_name(input);
-	input = get_input("Enter " + this->_contacts[contact_index].get_first_name() + "'s nick name : ");
-	this->_contacts[contact_index].set_nick_name(input);
-	input = get_input("Enter " + this->_contacts[contact_index].get_first_name() + "'s phone number : ");
-	this->_contacts[contact_index].set_phone_number(input);
-	input = get_input("Enter " + this->_contacts[contact_index].get_first_name() + "'s darkest secret : ");
-	this->_contacts[contact_index].set_darkest_secret(input);
-	if(this->_contacts[contact_index].get_first_name().length() > 10)
-		this->_contacts[contact_index].set_first_name(this->_contacts[contact_index].get_first_name().substr(0, 9) + ".");
-	if(this->_contacts[contact_index].get_last_name().length() > 10)
-		this->_contacts[contact_index].set_last_name(this->_contacts[contact_index].get_last_name().substr(0, 9) + ".");
-	if(this->_contacts[contact_index].get_nick_name().length() > 10)
-		this->_contacts[contact_index].set_nick_name(this->_contacts[contact_index].get_nick_name().substr(0, 9) + ".");
-	if(this->_contacts[contact_index].get_darkest_secret().length() > 10)
-		this->_contacts[contact_index].set_darkest_secret(this->_contacts[contact_index].get_darkest_secret().substr(0, 9) + ".");
-	cout << GREEN << "#-- Successfully added to the PhoneBook [" << contact_index + 1  << "/8] --#" << NORMAL << endl;
-	this->index++;
+void PhoneBook::add_info() {
+    if (this->index >= MAX_CONTACTS) {
+        cout << YELLOW << " WARNING! Overwriting info about the first contact" << NORMAL << endl;
+    }
+
+    int contact_index = this->index % MAX_CONTACTS;
+    Contact contact;
+
+    cout << GRAY << "#-- Adding a new contact -- #" << NORMAL << endl;
+    contact.set_first_name(get_input("Enter a first name: "));
+    contact.set_last_name(get_input("Enter " + contact.get_first_name() + "'s last name: "));
+    contact.set_nick_name(get_input("Enter " + contact.get_first_name() + "'s nick name: "));
+    contact.set_phone_number(get_input("Enter " + contact.get_first_name() + "'s phone number: "));
+    contact.set_darkest_secret(get_input("Enter " + contact.get_first_name() + "'s darkest secret: "));
+
+    contact.truncate_fields_to_limit(10);
+
+    this->_contacts[contact_index] = contact;
+
+    cout << GREEN << "#-- Successfully added to the PhoneBook [" << contact_index + 1 << "/" << MAX_CONTACTS << "] --#" << NORMAL << endl;
+    this->_index++;
 }
 
 
 void PhoneBook::print_info()
 {
-	if (this->index == 0) {
+	if (this->_index == 0) {
 		cout << RED " Nothing to show : use ADD to add a contact" << NORMAL << endl;
 		return ;
 	}
@@ -69,7 +57,7 @@ void PhoneBook::print_info()
 	cout << setw(10) << "Last Name" << "|";
 	cout << setw(10) << "Nickname" << "|" << endl;;
 	cout << "#############################################"<< NORMAL << endl;
-	for (int i = 0; i < this->index; i++)
+	for (int i = 0; i < this->_index; i++)
 	{
 		cout << GRAY << "|         " << NORMAL << i + 1 << GRAY << "|" << NORMAL;
 		cout << setfill (' ') << setw(10) << this->_contacts[i].get_first_name().substr(0, 10) << GRAY << "|" << NORMAL;
@@ -84,7 +72,7 @@ void PhoneBook::search_info(){
 	string input;
 	int search_index;
 	input = get_input("Enter desired Contact Index : ");
-	if (is_valid_index(input, this->index))
+	if (is_valid_index(input, this->_index))
 	{
 		search_index = atoi(input.c_str());
 		

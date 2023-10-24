@@ -6,13 +6,14 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 17:07:28 by maroy                                    */
-/*   Updated: 2023/10/14 17:07:36 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 17:18:06 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "../inc/Zombie.hpp"
 
-void	randomChump( string name ){
+void	randomChump(string name)
+{
 	Zombie zombie(name);
 	zombie.announce();
 }

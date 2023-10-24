@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:05:25 by maroy                                    */
-/*   Updated: 2023/10/14 17:03:31 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 16:26:59 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -17,42 +17,78 @@ Contact::Contact(){}
 
 Contact::~Contact(){}
 
-string Contact::Contact::get_first_name(void) const {
+//////////////////////////////////////////
+//										//
+//			GETTERS						//
+//										//
+//////////////////////////////////////////
+
+string Contact::get_first_name(void) const {
 	return (this->_first_name);
 }
 
-string Contact::Contact::get_last_name(void) const {
+string Contact::get_last_name(void) const {
 	return (this->_last_name);
 }
 
-string Contact::Contact::get_nick_name(void) const {
+string Contact::get_nick_name(void) const {
 	return (this->_nick_name);
 }
 
-string Contact::Contact::get_phone_number(void) const {
+string Contact::get_phone_number(void) const {
 	return (this->_phone_number);
 }
 
-string Contact::Contact::get_darkest_secret(void) const {
+string Contact::get_darkest_secret(void) const {
 	return (this->_darkest_secret);
 }
 
-void Contact::Contact::set_first_name(string first_name){
+//////////////////////////////////////////
+//										//
+//			SETTERS						//
+//										//
+//////////////////////////////////////////
+
+void Contact::set_first_name(string first_name){
 	this->_first_name = first_name;
 }
 
-void Contact::Contact::set_last_name(string last_name){
+void Contact::set_last_name(string last_name){
 	this->_last_name = last_name;
 }
 
-void Contact::Contact::set_nick_name(string nick_name){
+void Contact::set_nick_name(string nick_name){
 	this->_nick_name = nick_name;
 }
 
-void Contact::Contact::set_phone_number(string phone_number){
+void Contact::set_phone_number(string phone_number){
 	this->_phone_number = phone_number;
 }
 
-void Contact::Contact::set_darkest_secret(string darkest_secret){
+void Contact::set_darkest_secret(string darkest_secret){
 	this->_darkest_secret = darkest_secret;
+}
+
+//////////////////////////////////////////
+//										//
+//		MEMBER FONCTIONS				//
+//										//
+//////////////////////////////////////////
+
+void Contact::truncate_fields_to_limit(size_t limit) {
+	if (this->_first_name.length() > limit) {
+		this->_first_name = this->_first_name.substr(0, limit - 1) + ".";
+	}
+
+	if (this->_last_name.length() > limit) {
+		this->_last_name = this->_last_name.substr(0, limit - 1) + ".";
+	}
+
+	if (this->_nick_name.length() > limit) {
+		this->_nick_name = this->_nick_name.substr(0, limit - 1) + ".";
+	}
+
+	if (this->_darkest_secret.length() > limit) {
+		this->_darkest_secret = this->_darkest_secret.substr(0, limit - 1) + ".";
+	}
 }

@@ -6,13 +6,13 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/24 11:34:34 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/24 13:37:20 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
-NAME = Polymorphisme
+NAME = JeNeVeuxPasBrulerLeMonde
 
-CPPFLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -fsanitize=address -g3
 CC = c++
 
 # Directories

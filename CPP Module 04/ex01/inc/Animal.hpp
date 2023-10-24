@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Zombie.hpp                                        ██   ██      ██        */
+/*   Animal.hpp                                        ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 16:53:25 by maroy                                    */
-/*   Updated: 2023/10/24 17:17:53 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/20 18:42:43 by maroy                                    */
+/*   Updated: 2023/10/24 15:40:16 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
 
+#ifndef ANIMAL_H
+# define ANIMAL_H
+
+# include "Brain.hpp"
 # include "common.hpp"
 
-class Zombie
+class Animal
 {
   public:
-	Zombie(string name);
-	~Zombie();
-	void announce(void) const;
+	Animal();
+	Animal(Animal const &src);
+	virtual ~Animal();
 
-  private:
-	string _name;
+	Animal &operator=(Animal const &src);
+
+	virtual void makeSound() const;
+	// Setters - Getters
+	string getType() const;
+	void setType(string type);
+
+  protected:
+	string _type;
+	Brain *_brain;
 };
 
-Zombie	*newZombie(string name);
-void	randomChump(string name);
-
-#endif // ZOMBIE_HPP
+#endif // ANIMAL_H

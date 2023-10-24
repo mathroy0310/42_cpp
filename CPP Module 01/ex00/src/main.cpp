@@ -6,15 +6,15 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:52:32 by maroy                                    */
-/*   Updated: 2023/10/14 17:13:42 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 17:18:00 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "../inc/Zombie.hpp"
 
-int		main(void)
+int	main(void)
 {
-	Zombie	*zombie;
+	Zombie *zombie;
 
 	zombie = newZombie("Maroy");
 	zombie->announce();

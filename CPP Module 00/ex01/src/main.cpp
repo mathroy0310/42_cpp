@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:05:50 by maroy                                    */
-/*   Updated: 2023/10/14 17:03:33 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/24 16:27:16 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
     {
         cout << BOLD << "Enter a command : " << NORMAL;
         getline(cin, input);
-        if (cin.eof()) //Ctrl + D
+        if (cin.eof()) /* <-- Ctrl + D */
             exit(0);
         if (input == "ADD")
             my_phone_book.add_info();

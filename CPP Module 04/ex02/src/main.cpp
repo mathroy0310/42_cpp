@@ -6,27 +6,24 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:40:05 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:09:34 by maroy            ###   ########.fr       */
+/*   Updated: 2023/10/24 22:21:06 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.class.hpp"
+#include "AAnimal.class.hpp"
 #include "Cat.class.hpp"
 #include "Dog.class.hpp"
 #include "common.hpp"
 
 int main(void)
 {
-	const Animal *meta = new Animal();
-	const Animal *dog = new Dog();
-	const Animal *cat = new Cat();
+	const AAnimal *dog = new Dog();
+	const AAnimal *cat = new Cat();
 	cout << dog->getType() << " " << endl;
 	cout << cat->getType() << " " << endl;
 	dog->makeSound();
 	cat->makeSound();
-	meta->makeSound();
 
-	delete meta;
 	delete dog;
 	delete cat;
 
@@ -62,7 +59,7 @@ int main(void)
 	cout << endl
 		 << "---------------------" << endl;
 	// Array of animals
-	const Animal *animal_array[4];
+	const AAnimal *animal_array[4];
 	cout << endl;
 	// Half filled with dogs
 	for (int i = 0; i < 2; i++)

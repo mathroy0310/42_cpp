@@ -1,34 +1,38 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Dog.hpp                                           ██   ██      ██        */
+/*   WrongAnimal.hpp                                   ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/20 18:41:59 by maroy                                    */
-/*   Updated: 2023/10/24 15:32:08 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/20 19:25:41 by maroy                                    */
+/*   Updated: 2023/10/20 19:32:26 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
 
-#ifndef DOG_H
-# define DOG_H
+#ifndef WRONGANIMAL_H
+#define WRONGANIMAL_H
 
-# include "Animal.hpp"
-# include "common.hpp"
+#include "common.hpp"
 
-class Dog : public Animal
+class WrongAnimal
 {
-  public:
-	Dog();
-	Dog(Dog const &src);
-	~Dog();
 
-	Dog &operator=(Dog const &src);
+public:
+	WrongAnimal();
+	~WrongAnimal();
+	WrongAnimal(WrongAnimal const &src);
+
+	WrongAnimal &operator=(WrongAnimal const &src);
 
 	void makeSound() const;
+	string getType() const;
 
+protected:
+	string _type;
 };
 
-#endif // DOG_H
+#endif // WRONGANIMAL_H

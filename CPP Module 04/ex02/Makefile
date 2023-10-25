@@ -6,25 +6,24 @@
 #    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2023/10/24 22:23:05 by maroy            ###   ########.fr        #
+#    Updated: 2023/10/24 22:19:11 by maroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex02
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -fsanitize=address -g3
 CC = c++
 
 # Directories
 SRC_DIR = src
+INC_DIR = inc
 OBJ_DIR = obj
 BUILD_DIR = bin
 
 # Source files and object files
 SRCS = $(shell find $(SRC_DIR) -iname "*.cpp")
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-
-
 
 # Default target
 all: directories $(BUILD_DIR)/$(NAME)
@@ -42,11 +41,11 @@ directories:
 
 # Build the executable
 $(BUILD_DIR)/$(NAME): $(OBJS)
-	@$(CC) $(CPPFLAGS) $(OBJS) -o $@
+	@$(CC) $(CPPFLAGS) -I$(INC_DIR)  $(OBJS) -o $@
 
 # Compile the source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@$(CC) $(CPPFLAGS) -c $< -o $@
+	@$(CC) $(CPPFLAGS) -I$(INC_DIR) -c $< -o $@
 
 # Clean object files
 clean:

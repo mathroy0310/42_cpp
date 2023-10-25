@@ -10,32 +10,42 @@
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "Brain.hpp"
+#include "Brain.class.hpp"
 
 ///////////////////////////////////
 ///	CONSTRUCTORS & DESTRUCTOR	///
 ///////////////////////////////////
 
-Brain::Brain(){
-	//cout << "Brain default constructor called" << endl;
+Brain::Brain()
+{
+	// cout << "Brain default constructor called" << endl;
+	this->_ideas = new string[100];
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = "Ricard...";
 }
 
-Brain::Brain(Brain const &src) {
-	*this = src;
+Brain::Brain(Brain &ref)
+{
+	string *ref_ideas = ref.getIdeas();
+	this->_ideas = new string[100];
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = ref_ideas[i] + " stolen";
 }
 
-Brain::~Brain(){}
+Brain::~Brain()
+{
+	// cout << "Brain destructor called" << endl;
+	delete[] (this->_ideas);
+}
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
- 
-Brain & Brain::operator=(Brain const & src) {
-	if (this != &src)
-	{
-		for (int i = 0; i < 100; i++)
-			this->_ideas[i] = src._ideas[i];
-	}
+
+Brain &Brain::operator=(Brain const &rhs)
+{
+	for (int i = 0; i < 100; i++)
+		this->_ideas[i] = rhs._ideas[i];
 	return (*this);
 }
 
@@ -43,10 +53,12 @@ Brain & Brain::operator=(Brain const & src) {
 ///	Setters & Getters	///
 ///////////////////////////
 
-string	*Brain::getIdeas( void ){
+string *Brain::getIdeas(void)
+{
 	return (this->_ideas);
 }
 
-void	Brain::setIdeas(int i, string *ideas){
+void Brain::setIdeas(int i, string *ideas)
+{
 	this->_ideas[i] = ideas[i];
 }

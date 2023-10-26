@@ -6,12 +6,12 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:05:25 by maroy                                    */
-/*   Updated: 2023/10/26 13:11:32 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/26 18:57:57 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/Contact.hpp"
-#include "../inc/common.hpp"
+#include "Contact.class.hpp"
+#include "common.hpp"
 
 Contact::Contact()
 {
@@ -81,31 +81,4 @@ void Contact::set_phone_number(string phone_number)
 void Contact::set_darkest_secret(string darkest_secret)
 {
 	this->_darkest_secret = darkest_secret;
-}
-
-//////////////////////////////////////////
-//										//
-//		MEMBER FONCTIONS				//
-//										//
-//////////////////////////////////////////
-
-void Contact::truncate_fields_to_limit(size_t limit)
-{
-	if (this->_first_name.length() > limit)
-	{
-		this->_first_name = this->_first_name.substr(0, limit - 1) + ".";
-	}
-	if (this->_last_name.length() > limit)
-	{
-		this->_last_name = this->_last_name.substr(0, limit - 1) + ".";
-	}
-	if (this->_nick_name.length() > limit)
-	{
-		this->_nick_name = this->_nick_name.substr(0, limit - 1) + ".";
-	}
-	if (this->_darkest_secret.length() > limit)
-	{
-		this->_darkest_secret = this->_darkest_secret.substr(0, limit - 1)
-			+ ".";
-	}
 }

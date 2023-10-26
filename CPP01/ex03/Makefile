@@ -6,7 +6,7 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/26 13:52:41 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/26 14:16:53 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ clean:
 
 # Clean object files and the executable
 fclean: clean
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(NAME)
 	@echo	"$(RED)All deleted!$(DEFAULT)"
 
 # Rebuild everything

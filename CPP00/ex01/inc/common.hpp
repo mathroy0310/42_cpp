@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:33:48 by maroy                                    */
-/*   Updated: 2023/10/24 16:16:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/26 19:14:32 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ using std::getline;
 using std::setfill;
 using std::setw;
 using std::string;
-
-// #=- Local Includes -=# //
-# include "Contact.hpp"
-# include "PhoneBook.hpp"
+using std::left;
 
 // #=- Prototypes -=# //
 
 string	get_input(string msg);
 bool	is_valid_index(string input, int max_index);
+string truncate_to_limits(string input , size_t limit);
 
 #endif // COMMON_H

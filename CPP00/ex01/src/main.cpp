@@ -6,11 +6,12 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/09/02 20:05:50 by maroy                                    */
-/*   Updated: 2023/10/26 13:13:40 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/26 18:03:29 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/common.hpp"
+#include "common.hpp"
+#include "PhoneBook.class.hpp"
 
 // #=- Main Program -=# //
 

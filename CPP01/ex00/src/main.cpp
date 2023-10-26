@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:52:32 by maroy                                    */
-/*   Updated: 2023/10/26 13:59:53 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/26 18:24:54 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int	main(void)
 	zombie->announce();
 	delete zombie;
 	randomChump("Maroy");
-	return (0);
+	return (EXIT_SUCCESS);
 }

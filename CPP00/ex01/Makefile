@@ -6,34 +6,35 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/26 13:03:36 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/10/26 18:11:53 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
 NAME = ex01
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address -I$(INC_DIR)
 CC = c++
 
 # Directories
 SRC_DIR = src
 OBJ_DIR = obj
+INC_DIR = inc
 
 # Source files and object files
 SRCS = $(shell find $(SRC_DIR) -iname "*.cpp")
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Default target
-all: directories $(NAME)
-	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
+all: $(OBJ_DIR) $(NAME)
 
 # Create necessary directories
-directories:
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(BUILD_DIR)
 
 # Build the executable
 $(NAME): $(OBJS)
 	@$(CC) $(CPPFLAGS) $(OBJS) -o $@
+	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
 
 # Compile the source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp

@@ -6,18 +6,13 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/26 13:47:26 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/01 13:35:40 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
 #ifndef COMMON_H
 # define COMMON_H
-
-# define DEBUG ANSI_COLOR_BRIGHT_BLUE "[DEBUG] "
-# define INFO ANSI_COLOR_BRIGHT_GREEN "[INFO] "
-# define WARNING ANSI_COLOR_BRIGHT_YELLOW "[WARNING] "
-# define ERROR ANSI_COLOR_BRIGHT_RED "[ERROR] "
 
 // #=- Colors -=# //
 # define ANSI_COLOR_RESET "\x1b[0m"

@@ -6,7 +6,7 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/10/26 14:17:03 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/11/01 13:30:26 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
@@ -18,7 +18,6 @@ CC = c++
 # Directories
 SRC_DIR = src
 OBJ_DIR = obj
-BUILD_DIR = .
 INC_DIR = inc
 
 # Source files and object files
@@ -26,17 +25,21 @@ SRCS = $(shell find $(SRC_DIR) -iname "*.cpp")
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Default target
-all: directories $(BUILD_DIR)/$(NAME)
-	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
+all: $(OBJ_DIR) $(NAME)
+
+# Debug target
+debug: $(CPPFLAGS) += -DDEBUG=1 -g
+debug: re
+	@echo "$(GREEN)$(NAME) created in debug mode !$(DEFAULT)"
 
 # Create necessary directories
-directories:
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(BUILD_DIR)
 
 # Build the executable
-$(BUILD_DIR)/$(NAME): $(OBJS)
+$(NAME): $(OBJS)
 	@$(CC) $(CPPFLAGS) $(OBJS) -o $@
+	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
 
 # Compile the source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp

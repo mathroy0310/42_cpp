@@ -6,12 +6,18 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 19:35:41 by maroy                                    */
-/*   Updated: 2023/10/26 13:46:45 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/01 13:36:29 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Harl.class.hpp"
 #include "common.hpp"
+
+# define DEBUG ANSI_COLOR_BRIGHT_BLUE "[DEBUG] "
+# define INFO ANSI_COLOR_BRIGHT_GREEN "[INFO] "
+# define WARNING ANSI_COLOR_BRIGHT_YELLOW "[WARNING] "
+# define ERROR ANSI_COLOR_BRIGHT_RED "[ERROR] "
+
 
 Harl::Harl()
 {
@@ -28,8 +34,7 @@ void Harl::debug(void)
 
 void Harl::info(void)
 {
-	cout << INFO << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger ! If you did,
-		I wouldn’t be asking for more !" << endl;
+	cout << INFO << "I cannot believe adding extra bacon costs more money. You didn’t put enough bacon in my burger ! If you did, I wouldn’t be asking for more !" << endl;
 }
 
 void Harl::warning(void)

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 18:51:31 by maroy                                    */
-/*   Updated: 2023/10/26 13:53:12 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/01 13:34:21 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	if (argc != 4)
 	{
 		cerr << ERR_PREFIX "Invalid number of arguments." << endl;
-		cerr << "Usage: ./" << argv[0] << " <filename> <string1> <string2>" << ANSI_COLOR_RESET << endl;
+		cerr << "Usage: " << argv[0] << " <filename> <string1> <string2>" << ANSI_COLOR_RESET << endl;
 		return (EXIT_FAILURE);
 	}
 

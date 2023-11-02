@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 19:33:20 by maroy                                    */
-/*   Updated: 2023/10/26 13:47:24 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 16:10:25 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ class Harl
 	void info(void);
 	void warning(void);
 	void error(void);
+	void insignificant(void);
 };
 
 #endif // HARL_H

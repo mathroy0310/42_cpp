@@ -1,48 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   HumanB.hpp                                        ██   ██      ██        */
+/*   HumanA.class.hpp                                  ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 18:21:13 by maroy                                    */
-/*   Updated: 2023/10/14 18:28:22 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 18:20:34 by maroy                                    */
+/*   Updated: 2023/11/02 15:25:44 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef HUMANB_H
-# define HUMANB_H
 
+#include "Weapon.class.hpp"
 #include "common.hpp"
-#include "Weapon.hpp"
 
-class HumanB 
-{	
-	public:
+class HumanA
+{
+  public:
+	HumanA(string name, Weapon &weapon);
+	~HumanA();
 
-		HumanB(string name);
-		~HumanB();
+	// #=- Getters -=# //
 
-		// #=- Getters -=# //
-		
-		string		getName(void);
-		Weapon		*getWeapon(void);
+	string getName(void);
+	Weapon *getWeapon(void);
 
-		// #=- Setters -=# //
+	// #=- Setters -=# //
 
-		void			setName(string name);
-		void			setWeapon(Weapon &weapon);
+	void setName(string name);
+	void setWeapon(Weapon &weapon);
 
-		// #=- Actions -=# //
+	// #=- Actions -=# //
 
-		void			attack(void);
+	void attack(void);
 
-	private:
-
-		string		_name;
-		Weapon		*_weapon;
-
+  private:
+	string _name;
+	Weapon *_weapon;
 };
-
-#endif // HUMANB_H

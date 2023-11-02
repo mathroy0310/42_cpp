@@ -6,12 +6,21 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 19:35:41 by maroy                                    */
-/*   Updated: 2023/10/26 13:53:56 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 16:12:04 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Harl.class.hpp"
 #include "common.hpp"
+
+enum	level_enum
+{
+	Debug,
+	Info,
+	Warning,
+	Error,
+	Other
+};
 
 Harl::Harl()
 {
@@ -43,10 +52,10 @@ void Harl::error(void)
 
 void Harl::complain(string level)
 {
-	Harl::level_pointer[0] = &Harl::debug;
-	Harl::level_pointer[1] = &Harl::info;
-	Harl::level_pointer[2] = &Harl::warning;
-	Harl::level_pointer[3] = &Harl::error;
+	Harl::level_pointer[Debug] = &Harl::debug;
+	Harl::level_pointer[Info] = &Harl::info;
+	Harl::level_pointer[Warning] = &Harl::warning;
+	Harl::level_pointer[Error] = &Harl::error;
 
 	string level_data[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 

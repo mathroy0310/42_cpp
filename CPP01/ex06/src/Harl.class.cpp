@@ -6,18 +6,26 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 19:35:41 by maroy                                    */
-/*   Updated: 2023/11/01 13:36:29 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 16:11:27 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Harl.class.hpp"
 #include "common.hpp"
 
-# define DEBUG ANSI_COLOR_BRIGHT_BLUE "[DEBUG] "
-# define INFO ANSI_COLOR_BRIGHT_GREEN "[INFO] "
-# define WARNING ANSI_COLOR_BRIGHT_YELLOW "[WARNING] "
-# define ERROR ANSI_COLOR_BRIGHT_RED "[ERROR] "
+#define DEBUG ANSI_COLOR_BRIGHT_BLUE "[DEBUG] "
+#define INFO ANSI_COLOR_BRIGHT_GREEN "[INFO] "
+#define WARNING ANSI_COLOR_BRIGHT_YELLOW "[WARNING] "
+#define ERROR ANSI_COLOR_BRIGHT_RED "[ERROR] "
 
+enum	level_enum
+{
+	Debug,
+	Info,
+	Warning,
+	Error,
+	Other
+};
 
 Harl::Harl()
 {
@@ -47,24 +55,38 @@ void Harl::error(void)
 	cout << ERROR << "This is unacceptable ! I want to speak to the manager now." << endl;
 }
 
+void Harl::insignificant(void)
+{
+	cout << ANSI_COLOR_BOLD << "[ Probably complaining about insignificant problems ]" << endl;
+}
+
 void Harl::complain(string level)
 {
-	Harl::level_pointer[0] = &Harl::debug;
-	Harl::level_pointer[1] = &Harl::info;
-	Harl::level_pointer[2] = &Harl::warning;
-	Harl::level_pointer[3] = &Harl::error;
+	Harl::level_pointer[Debug] = &Harl::debug;
+	Harl::level_pointer[Info] = &Harl::info;
+	Harl::level_pointer[Warning] = &Harl::warning;
+	Harl::level_pointer[Error] = &Harl::error;
 
 	string level_data[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
-	for (size_t i = 0; i < 4; i++)
+	size_t index = 0;
+	for (; index < 4; ++index)
+		if (level == level_data[index])
+			break ;
+
+	switch (index)
 	{
-		if (level == level_data[i])
-		{
-			while (i < 4)
-				(this->*level_pointer[i++])();
-			return ;
-		}
+		case Debug:
+			(this->*level_pointer[Debug])();
+		case Info:
+			(this->*level_pointer[Info])();
+		case Warning:
+			(this->*level_pointer[Warning])();
+		case Error:
+			(this->*level_pointer[Error])();
+			break ;
+		default:
+			insignificant();
+			break ;
 	}
-	cout << ANSI_COLOR_BOLD << "[ Probably complaining about insignificant problems ]" << endl;
-	return ;
 }

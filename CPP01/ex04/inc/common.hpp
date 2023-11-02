@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/14 19:22:02 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 15:34:30 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #ifndef COMMON_H
 # define COMMON_H
 
-#define ERR_PREFIX ANSI_COLOR_BRIGHT_RED "Error 🛑: "
-#define SUCCESS_PREFIX ANSI_COLOR_BRIGHT_GREEN "Success ✅: "
-
+# define ERR_PREFIX ANSI_COLOR_BRIGHT_RED "Error 🛑: "
+# define SUCCESS_PREFIX ANSI_COLOR_BRIGHT_GREEN "Success ✅: "
 
 // #=- Colors -=# //
 # define ANSI_COLOR_RESET "\x1b[0m"
@@ -38,19 +37,18 @@
 # define ANSI_COLOR_BRIGHT_WHITE "\x1b[37;1m"
 
 // #=- STD Includes -=# //
-# include <iostream>
-# include <string>
 # include <fstream>
+# include <iostream>
 # include <sstream>
+# include <string>
 
 // #=- Namespace Declarations -=# //
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
 using std::getline;
-using std::string;
 using std::ifstream;
 using std::ofstream;
-
+using std::string;
 
 #endif // COMMON_H

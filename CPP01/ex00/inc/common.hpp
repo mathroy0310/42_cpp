@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/11/01 13:22:24 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 15:20:19 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 #ifndef COMMON_H
 # define COMMON_H
 
-#ifndef DEBUG
-# define DEBUG 0
-#endif
 
 // #=- Colors -=# //
 # define ANSI_COLOR_RESET "\x1b[0m"

@@ -6,7 +6,7 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/11/01 13:26:36 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/11/02 15:22:37 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
@@ -26,11 +26,6 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Default target
 all: $(OBJ_DIR) $(NAME)
-
-# Debug target
-debug: $(CPPFLAGS) += -DDEBUG=1 -g
-debug: re
-	@echo "$(GREEN)$(NAME) created in debug mode !$(DEFAULT)"
 
 # Create necessary directories
 $(OBJ_DIR):

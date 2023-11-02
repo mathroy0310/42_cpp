@@ -6,16 +6,16 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 18:18:43 by maroy                                    */
-/*   Updated: 2023/10/14 18:48:10 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 16:20:18 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/common.hpp"
-#include "../inc/Weapon.hpp"
-#include "../inc/HumanA.hpp"
-#include "../inc/HumanB.hpp"
+#include "HumanA.class.hpp"
+#include "HumanB.class.hpp"
+#include "Weapon.class.hpp"
+#include "common.hpp"
 
-int main()
+int	main(void)
 {
 	{
 		Weapon club = Weapon("crude spiked club");
@@ -24,6 +24,7 @@ int main()
 		club.setType("some other type of club");
 		bob.attack();
 	}
+	cout << endl;
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanB jim("Jim");
@@ -32,6 +33,7 @@ int main()
 		club.setType("some other type of club");
 		jim.attack();
 	}
+	cout << endl;
 	{
 		Weapon axe = Weapon("Heavy axe");
 		HumanA maroy("Maroy", axe);
@@ -39,13 +41,17 @@ int main()
 		axe.setType("Light axe");
 		maroy.attack();
 	}
+	cout << endl;
 	{
 		Weapon axe = Weapon("Heavy axe");
 		HumanB maroy("Maroy");
+		maroy.attack();
+		maroy.setName("math2");
+		maroy.attack();
 		maroy.setWeapon(axe);
 		maroy.attack();
 		axe.setType("Light axe");
 		maroy.attack();
 	}
-	return 0;
+	return (0);
 }

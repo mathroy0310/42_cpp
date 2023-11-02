@@ -1,38 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Weapon.hpp                                        ██   ██      ██        */
+/*   HumanB.class.hpp                                  ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 18:16:47 by maroy                                    */
-/*   Updated: 2023/10/14 18:29:38 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 18:21:13 by maroy                                    */
+/*   Updated: 2023/11/02 15:25:51 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef WEAPON_H
-# define WEAPON_H
 
 #include "common.hpp"
+#include "Weapon.class.hpp"
 
-class Weapon
-{
-
+class HumanB 
+{	
 	public:
 
-		Weapon(string type);
-		~Weapon();
+		HumanB(string name);
+		~HumanB();
 
 		// #=- Getters -=# //
-		string		getType(void);
+		
+		string		getName(void);
+		Weapon		*getWeapon(void);
+
 		// #=- Setters -=# //
-		void			setType(string type);
+
+		void			setName(string name);
+		void			setWeapon(Weapon &weapon);
+
+		// #=- Actions -=# //
+
+		void			attack(void);
 
 	private:
 
-		string		_type;
+		string		_name;
+		Weapon		*_weapon;
 
 };
-
-#endif // WEAPON_H

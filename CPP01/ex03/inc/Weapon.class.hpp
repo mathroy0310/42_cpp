@@ -1,48 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   HumanA.hpp                                        ██   ██      ██        */
+/*   Weapon.class.hpp                                  ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/14 18:20:34 by maroy                                    */
-/*   Updated: 2023/10/14 18:40:37 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/14 18:16:47 by maroy                                    */
+/*   Updated: 2023/11/02 16:28:23 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
-#ifndef HUMANA_H
-# define HUMANA_H
-
 #include "common.hpp"
-#include "Weapon.hpp"
 
-class HumanA
+class Weapon
 {
+
 	public:
 
-		HumanA(string name, Weapon &weapon);
-		~HumanA();
+		Weapon(string type);
+		~Weapon();
 
 		// #=- Getters -=# //
-
-		string		getName(void);
-		Weapon		*getWeapon(void);
-		
+		//reference to a const string
+		const string& 	getType(void) const;
 		// #=- Setters -=# //
-
-		void			setName(string name);
-		void			setWeapon(Weapon &weapon);
-
-		// #=- Actions -=# //
-
-		void			attack(void);
+		void			setType(string type);
 
 	private:
 
-		string		_name;
-		Weapon		*_weapon;
+		string		_type;
 
 };
-
-#endif // HUMANA_H

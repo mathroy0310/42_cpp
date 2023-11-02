@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 18:51:31 by maroy                                    */
-/*   Updated: 2023/11/01 13:34:21 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/02 16:10:21 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 	string line;
 	string s1 = argv[2];
 	string s2 = argv[3];
+
+	bool is_last_line = false;
 	while (getline(infile, line))
 	{
 		size_t pos = 0;
@@ -49,7 +51,10 @@ int	main(int argc, char **argv)
 			line = line.substr(0, pos) + s2 + line.substr(pos + s1.length());
 			pos += s2.length();
 		}
-		outfile << line << "\n";
+		is_last_line = infile.eof();
+		outfile << line;
+		if (!is_last_line)
+			outfile << endl;
 	}
 	cout << SUCCESS_PREFIX "The file has been processed successfully. The result has been written to " << filename << ".replace" << ANSI_COLOR_RESET << endl;
 

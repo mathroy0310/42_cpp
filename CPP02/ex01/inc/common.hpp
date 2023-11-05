@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/16 12:56:51 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/05 16:12:52 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -38,16 +38,14 @@
 # define ANSI_COLOR_BRIGHT_WHITE "\x1b[37;1m"
 # define ANSI_COLOR_BOLD "\033[1;37m"
 
-
 // #=- STD Includes -=# //
 # include <iostream>
 # include <string>
 
 // #=- Namespace Declarations -=# //
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
 using std::string;
-using std::ostream;
 
 #endif // COMMON_H

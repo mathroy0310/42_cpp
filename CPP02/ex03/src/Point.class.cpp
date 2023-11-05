@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   Point.cpp                                         ██   ██      ██        */
+/*   Point.class.cpp                                   ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/16 15:39:56 by maroy                                    */
-/*   Updated: 2023/10/16 16:54:00 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/05 16:26:18 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/common.hpp"
-
+#include "common.hpp"
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -19,11 +18,19 @@
 ///														///
 ///////////////////////////////////////////////////////////
 
-Point::Point() : _x(0), _y(0){}
+Point::Point()
+	: _x(0), _y(0)
+{
+}
 
-Point::Point(Fixed const x, Fixed const y) : _x(x), _y(y){}
+Point::Point(Fixed const x, Fixed const y)
+	: _x(x), _y(y)
+{
+}
 
-Point::~Point(){}
+Point::~Point()
+{
+}
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -31,11 +38,13 @@ Point::~Point(){}
 ///														///
 ///////////////////////////////////////////////////////////
 
-Fixed	Point::getX( void ) const {
-	return(this->_x);
+Fixed Point::getX(void) const
+{
+	return (this->_x);
 }
 
-Fixed	Point::getY( void ) const {
+Fixed Point::getY(void) const
+{
 	return (this->_y);
 }
 
@@ -45,6 +54,7 @@ Fixed	Point::getY( void ) const {
 ///														///
 ///////////////////////////////////////////////////////////
 
-void Point::printPoint( Point const &point ) const{
+void Point::printPoint(Point const &point) const
+{
 	cout << "Point(" << point.getX() << ", " << point.getY() << ")" << endl;
 }

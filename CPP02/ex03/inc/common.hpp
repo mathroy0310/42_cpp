@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:54:43 by maroy                                    */
-/*   Updated: 2023/10/16 16:36:04 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/05 16:25:52 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -38,29 +38,21 @@
 # define ANSI_COLOR_BRIGHT_WHITE "\x1b[37;1m"
 # define ANSI_COLOR_BOLD "\033[1;37m"
 
-
 // #=- STD Includes -=# //
+# include <cmath>
 # include <iostream>
 # include <string>
-# include <cmath>
-
 
 // #=- Namespace Declarations -=# //
-using std::cout;
 using std::cerr;
+using std::cout;
 using std::endl;
-using std::string;
 using std::ostream;
+using std::string;
 
-// #=- Local Includes -=# //
-#ifndef FIXED_H
-# include "Fixed.hpp"
-#endif
-#ifndef POINT_H
-# include "Point.hpp"
-#endif
+# include "Fixed.class.hpp"
+# include "Point.class.hpp"
 
-
-bool bsp( Point const a, Point const b, Point const c, Point const point);
+bool	bsp(Point const a, Point const b, Point const c, Point const point);
 
 #endif // COMMON_H

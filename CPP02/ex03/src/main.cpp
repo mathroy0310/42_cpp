@@ -6,15 +6,13 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 20:51:15 by maroy                                    */
-/*   Updated: 2023/11/05 16:27:19 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/05 16:31:22 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "common.hpp"
 
 /*
-	To view the triangle, copy the following link and paste it in your browser:
-
 	https://www.desmos.com/geometry/j5d9uewfb6
 */
 int	main(void)

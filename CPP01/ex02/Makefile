@@ -6,13 +6,13 @@
 #    By: maroy <maroy@student.42.qc>                        ██ ██              #
 #                                                           ██ ███████.qc      #
 #    Created: 2023/09/02 20:07:36 by maroy                                     #
-#    Updated: 2023/11/02 15:22:37 by maroy            >(.)__ <(.)__ =(.)__     #
+#    Updated: 2023/11/04 13:35:53 by maroy            >(.)__ <(.)__ =(.)__     #
 #                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
 NAME = ex02
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address -I$(INC_DIR)
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 CC = c++
 
 # Directories
@@ -39,6 +39,10 @@ $(NAME): $(OBJS)
 # Compile the source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	@$(CC) $(CPPFLAGS) -c $< -o $@
+
+leak: CPPFLAGS += -g3
+leak: re
+	@leaks --atExit -- ./$(NAME)
 
 # Clean object files
 clean:

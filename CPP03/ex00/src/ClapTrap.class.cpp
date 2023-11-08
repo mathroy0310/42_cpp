@@ -1,17 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   ClapTrap.cpp                                      ██   ██      ██        */
+/*   ClapTrap.class.cpp                                ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/19 12:16:57 by maroy                                    */
-/*   Updated: 2023/10/19 14:47:15 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/08 17:07:25 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/ClapTrap.hpp"
-#include "../inc/common.hpp"
+#include "ClapTrap.class.hpp"
+#include "common.hpp"
+
+const unsigned int ClapTrap::_max_hit_points = 10;
+const unsigned int ClapTrap::_max_energy_points = 10;
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -19,25 +22,24 @@
 ///														///
 ///////////////////////////////////////////////////////////
 
-ClapTrap::ClapTrap(): _name("Default"), _hit_points(10), _energy_points(10), _attack_damage(0) {
+ClapTrap::ClapTrap(): _name("default"), _hit_points(this->_max_hit_points), _energy_points(this->_max_energy_points), _attack_damage(0)
+{
 	cout << "ClapTrap default constructor called" << endl;
 }
 
-ClapTrap::ClapTrap( string name ): _name(name), _hit_points(10), _energy_points(10), _attack_damage(0){
-	cout << "ClapTrap name parameter constructor called" << endl;
+ClapTrap::ClapTrap(string name) : _name(name), _hit_points(this->_max_hit_points), _energy_points(this->_max_energy_points), _attack_damage(0)
+{
+	cout << "ClapTrap parameter constructor called" << endl;
 }
 
-ClapTrap::ClapTrap( string name, unsigned int hit_points, unsigned int energy_points, unsigned int attack_damage )\
-: _name(name), _hit_points(hit_points), _energy_points(energy_points), _attack_damage(attack_damage) {
-	cout << "ClapTrap all parameters constructor called" << endl;
-}
-
-ClapTrap::ClapTrap( ClapTrap const & src ){
+ClapTrap::ClapTrap(ClapTrap const &src)
+{
 	cout << "ClapTrap copy constructor called" << endl;
 	*this = src;
 }
 
-ClapTrap::~ClapTrap(){
+ClapTrap::~ClapTrap()
+{
 	cout << "ClapTrap destructor called" << endl;
 }
 
@@ -47,7 +49,9 @@ ClapTrap::~ClapTrap(){
 ///														///
 ///////////////////////////////////////////////////////////
 
-ClapTrap &ClapTrap::operator=(ClapTrap const & rhs){
+ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
+{
+	cout << "ClapTrap assignation operator called" << endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
@@ -64,19 +68,23 @@ ClapTrap &ClapTrap::operator=(ClapTrap const & rhs){
 ///														///
 ///////////////////////////////////////////////////////////
 
-string			ClapTrap::getName( void ) const{
+string ClapTrap::getName(void) const
+{
 	return (this->_name);
 }
 
-unsigned int	ClapTrap::getHitPoints( void ) const{
+unsigned int ClapTrap::getHitPoints(void) const
+{
 	return (this->_hit_points);
 }
 
-unsigned int	ClapTrap::getEnergyPoints( void ) const{
+unsigned int ClapTrap::getEnergyPoints(void) const
+{
 	return (this->_energy_points);
 }
 
-unsigned int	ClapTrap::getMeleeAttackDamage( void ) const{
+unsigned int ClapTrap::getMeleeAttackDamage(void) const
+{
 	return (this->_attack_damage);
 }
 
@@ -86,19 +94,23 @@ unsigned int	ClapTrap::getMeleeAttackDamage( void ) const{
 ///														///
 ///////////////////////////////////////////////////////////
 
-void			ClapTrap::setName( string name ){
+void ClapTrap::setName(string name)
+{
 	this->_name = name;
 }
 
-void			ClapTrap::setHitPoints( unsigned int hit_points ){
+void ClapTrap::setHitPoints(unsigned int hit_points)
+{
 	this->_hit_points = hit_points;
 }
 
-void			ClapTrap::setEnergyPoints( unsigned int energy_points ){
+void ClapTrap::setEnergyPoints(unsigned int energy_points)
+{
 	this->_energy_points = energy_points;
 }
 
-void			ClapTrap::setMeleeAttackDamage( unsigned int attack_damage){
+void ClapTrap::setMeleeAttackDamage(unsigned int attack_damage)
+{
 	this->_attack_damage = attack_damage;
 }
 
@@ -108,54 +120,70 @@ void			ClapTrap::setMeleeAttackDamage( unsigned int attack_damage){
 ///														///
 ///////////////////////////////////////////////////////////
 
-bool			ClapTrap::isAlive( void ){
+bool ClapTrap::isAlive(void) const
+{
 	if (this->getHitPoints() > 0)
 		return (true);
 	return (false);
 }
 
-bool			ClapTrap::isEnergy( void ){
+bool ClapTrap::isEnergy(void) const
+{
 	if (this->getEnergyPoints() > 0)
 		return (true);
 	return (false);
 }
 
-void			ClapTrap::printStatus( void ){
-	cout << ANSI_COLOR_BOLD <<"ClapTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points." << ANSI_COLOR_RESET <<endl;
+void ClapTrap::printStatus(void) const
+{
+	cout << ANSI_COLOR_BRIGHT_CYAN << "ClapTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points." << ANSI_COLOR_RESET << endl;
 }
 
-void			ClapTrap::attack (string const &target ){
-	if (this->isEnergy())
+void ClapTrap::attack(string const &target)
+{
+	if (!this->isEnergy())
 	{
-		cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getMeleeAttackDamage() << " points of damage!" << endl;
-		setEnergyPoints(getEnergyPoints() - 1);
+		cout << "ClapTrap " << this->getName() << " has not enough energy points to attack!" << endl;
 		return ;
 	}
-	cout << "ClapTrap " << this->getName() << " has not enough energy points to attack!" << endl;
+	if (!this->isAlive())
+	{
+		cout << "ClapTrap " << this->getName() << " is dead, Claptraps can't attack when dead ..." << endl;
+		return ;
+	}
+	ClapTrap::setEnergyPoints(getEnergyPoints() - 1);
+	cout << "ClapTrap " << this->getName() << " attacks " << target << ",causing " << this->getMeleeAttackDamage() << " points of damage !" << endl;
 }
 
-void			ClapTrap::takeDamage( unsigned int amount ){
+void ClapTrap::takeDamage(unsigned int amount)
+{
 	if (this->isAlive())
 	{
 		if (amount > this->getHitPoints())
 			amount = this->getHitPoints();
 		cout << "ClapTrap " << this->getName() << " takes " << amount << " points of damage!" << endl;
-		this->setHitPoints(getHitPoints() - amount);
+		ClapTrap::setHitPoints(getHitPoints() - amount);
 		return ;
 	}
 	cout << "ClapTrap " << this->getName() << " is dead" << endl;
-	setHitPoints(0);
-	
+	ClapTrap::setHitPoints(0);
 }
 
-void			ClapTrap::beRepaired( unsigned int amount ){
-	if (this->isEnergy())
+void ClapTrap::beRepaired(unsigned int amount)
+{
+	if (!this->isEnergy())
 	{
-		cout << "ClapTrap " << this->getName() << " is repaired for " << amount << " points of damage!" << endl;
-		setHitPoints(getHitPoints() + amount);
-		setEnergyPoints(getEnergyPoints() - 1);
+		cout << "ClapTrap " << this->getName() << " has not enough energy points to be repaired!" << endl;
 		return ;
 	}
-	cout << "ClapTrap " << this->getName() << " has not enough energy points to be repaired!" << endl;
+	if (!this->isAlive())
+	{
+		cout << "ClapTrap " << this->getName() << " is dead, Claptraps can't be repaired when dead ..." << endl;
+		return ;
+	}
+	if ((this->getHitPoints() + amount) > this->_max_hit_points)
+		amount = this->_max_hit_points - this->getHitPoints();
+	cout << "ClapTrap " << this->getName() << " is repaired for " << amount << " points of damage!" << endl;
+	ClapTrap::setHitPoints(getHitPoints() + amount);
+	ClapTrap::setEnergyPoints(getEnergyPoints() - 1);
 }
-

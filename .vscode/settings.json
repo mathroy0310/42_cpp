@@ -74,5 +74,5 @@
 		"random": "cpp",
 		"numbers": "cpp"
 	},
-	"editor.formatOnSave": true
+	"editor.formatOnSave": false
 }

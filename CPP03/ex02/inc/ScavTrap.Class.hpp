@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   ScavTrap.hpp                                      ██   ██      ██        */
+/*   ScavTrap.Class.hpp                                ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/19 13:30:26 by maroy                                    */
-/*   Updated: 2023/10/19 15:07:26 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/09 15:28:57 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define SCAVTRAP_HPP
 
 #include "common.hpp"
-# include "ClapTrap.hpp"
+# include "ClapTrap.Class.hpp"
 
 class ScavTrap: public ClapTrap{
 	
@@ -27,9 +27,9 @@ class ScavTrap: public ClapTrap{
 		
 		~ScavTrap();
 		
-		void			printStatus( void );
+		void			printStatus( void ) const;
 		void 			attack( string const & target );
-		void			guardGate( void );
+		void			guardGate( void ) const;
 };
 
 #endif // SCAVTRAP_HPP

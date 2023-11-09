@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   FragTrap.cpp                                      ██   ██      ██        */
+/*   FragTrap.Class.cpp                                ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/19 14:50:54 by maroy                                    */
-/*   Updated: 2023/10/19 15:08:00 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/09 16:10:15 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/common.hpp"
-#include "../inc/FragTrap.hpp"
+#include "common.hpp"
+#include "FragTrap.Class.hpp"
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -42,10 +42,10 @@ FragTrap::~FragTrap(){
 ///														///
 ///////////////////////////////////////////////////////////
 
-void			FragTrap::printStatus( void ){
-	cout << ANSI_COLOR_BOLD << "FragTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points."<< ANSI_COLOR_RESET << endl;
+void			FragTrap::printStatus( void ) const {
+	cout << ANSI_COLOR_MAGENTA << "FragTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points."<< ANSI_COLOR_RESET << endl;
 }
 
-void			FragTrap::highFivesGuys( void ){
+void			FragTrap::highFivesGuys( void ) const {
 	cout << "FragTrap " << this->getName() << " has requested a high five!" << endl;
 }

@@ -1,21 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   ScavTrap.class.cpp                                ██   ██      ██        */
+/*   ScavTrap.cpp                                      ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/19 13:30:08 by maroy                                    */
-/*   Updated: 2023/11/08 17:01:28 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/10/19 14:53:42 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "ScavTrap.class.hpp"
-#include "common.hpp"
-
-static const unsigned int _max_hit_points = 100;
-static const unsigned int _max_energy_points = 50;
-static const unsigned int _attack_damage = 20;
+#include "../inc/ScavTrap.hpp"
+#include "../inc/common.hpp"
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -47,21 +43,20 @@ ScavTrap::~ScavTrap(){
 ///														///
 ///////////////////////////////////////////////////////////
 
-void 			ScavTrap::attack(string const &target)
-{
-	if (!this->isEnergy())
-	{
-		cout << "ScavTrap " << this->getName() << " has not enough energy points to attack!" << endl;
-		return ;
-	}
-	if (!this->isAlive())
-	{
-		cout << "ScavTrap " << this->getName() << " is dead, ScavTraps can't attack when dead ..." << endl;
-		return ;
-	}
-	ClapTrap::setEnergyPoints(getEnergyPoints() - 1);
-	cout << "ScavTrap " << this->getName() << " attacks " << target << ",causing " << this->getMeleeAttackDamage() << " points of damage !" << endl;
+void			ScavTrap::printStatus( void ){
+	cout << ANSI_COLOR_BOLD << "ScavTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points."<< ANSI_COLOR_RESET << endl;
 }
+
+void			ScavTrap::attack (string const &target ){
+	if (this->isEnergy())
+	{
+		cout << "ScavTrap " << this->getName() << " attacks " << target << ", causing " << this->getMeleeAttackDamage() << " points of damage!" << endl;
+		setEnergyPoints(getEnergyPoints() - 1);
+		return ;
+	}
+	cout << "ScavTrap " << this->getName() << " has not enough energy points to attack!" << endl;
+}
+
 void			ScavTrap::guardGate( void ){
 	cout << "ScavTrap " << this->getName() << " has enterred in Gate keeper mode." << endl;
 }

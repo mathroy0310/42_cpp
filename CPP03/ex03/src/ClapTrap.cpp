@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                     ██   ██ ██████         */
-/*   ClapTrap.class.cpp                                ██   ██      ██        */
-/*                                                     ███████  █████         */
-/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
-/*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/19 12:16:57 by maroy                                    */
-/*   Updated: 2023/11/08 16:59:21 by maroy            >(.)__ <(.)__ =(.)__    */
-/*                                                     (___/  (___/  (___/    */
+/*                                                        :::      ::::::::   */
+/*   ClapTrap.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/19 12:16:57 by maroy             #+#    #+#             */
+/*   Updated: 2023/10/24 22:25:26 by maroy            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.class.hpp"
-#include "common.hpp"
-
-
-static const unsigned int _max_hit_points = 10;
-static const unsigned int _max_energy_points = 10;
-static const unsigned int _attack_damage = 0;
+#include "../inc/common.hpp"
+#include "../inc/ClapTrap.hpp"
 
 ///////////////////////////////////////////////////////////
 ///														///
@@ -24,22 +19,20 @@ static const unsigned int _attack_damage = 0;
 ///														///
 ///////////////////////////////////////////////////////////
 
-ClapTrap::ClapTrap()
+ClapTrap::ClapTrap() : _name("Default"), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	cout << "ClapTrap default constructor called" << endl;
-	setName("default");
-	setHitPoints(10);
-	setEnergyPoints(10);
-	setMeleeAttackDamage(0);
 }
 
-ClapTrap::ClapTrap(string name) : _name(name), _hit_points(_max_hit_points), _energy_points(_max_energy_points)
+ClapTrap::ClapTrap(string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(0)
 {
 	cout << "ClapTrap name parameter constructor called" << endl;
 }
-ClapTrap::ClapTrap(string name, unsigned int hit_points, unsigned int energy_points, unsigned int attack_damage) : _name(name), _hit_points(hit_points), _energy_points(energy_points)
+
+ClapTrap::ClapTrap(string name, unsigned int hit_points, unsigned int energy_points, unsigned int attack_damage)
+	: _name(name), _hit_points(hit_points), _energy_points(energy_points), _attack_damage(attack_damage)
 {
-	cout << "Claptrap parameters constructor called" << endl;
+	cout << "ClapTrap all parameters constructor called" << endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src)
@@ -61,7 +54,6 @@ ClapTrap::~ClapTrap()
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &rhs)
 {
-	cout << "ClapTrap assignation operator called" << endl;
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
@@ -130,39 +122,34 @@ void ClapTrap::setMeleeAttackDamage(unsigned int attack_damage)
 ///														///
 ///////////////////////////////////////////////////////////
 
-bool ClapTrap::isAlive(void) const
+bool ClapTrap::isAlive(void)
 {
 	if (this->getHitPoints() > 0)
 		return (true);
 	return (false);
 }
 
-bool ClapTrap::isEnergy(void) const
+bool ClapTrap::isEnergy(void)
 {
 	if (this->getEnergyPoints() > 0)
 		return (true);
 	return (false);
 }
 
-void ClapTrap::printStatus(void) const
+void ClapTrap::printStatus(void)
 {
-	cout << ANSI_COLOR_BRIGHT_CYAN << "ClapTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points." << ANSI_COLOR_RESET << endl;
+	cout << ANSI_COLOR_BOLD << "ClapTrap " << this->getName() << " has " << this->getHitPoints() << " hit points and " << this->getEnergyPoints() << " energy points." << ANSI_COLOR_RESET << endl;
 }
 
 void ClapTrap::attack(string const &target)
 {
-	if (!this->isEnergy())
+	if (this->isEnergy())
 	{
-		cout << "ClapTrap " << this->getName() << " has not enough energy points to attack!" << endl;
-		return ;
+		cout << "ClapTrap " << this->getName() << " attacks " << target << ", causing " << this->getMeleeAttackDamage() << " points of damage!" << endl;
+		setEnergyPoints(getEnergyPoints() - 1);
+		return;
 	}
-	if (!this->isAlive())
-	{
-		cout << "ClapTrap " << this->getName() << " is dead, Claptraps can't attack when dead ..." << endl;
-		return ;
-	}
-	ClapTrap::setEnergyPoints(getEnergyPoints() - 1);
-	cout << "ClapTrap " << this->getName() << " attacks " << target << ",causing " << this->getMeleeAttackDamage() << " points of damage !" << endl;
+	cout << "ClapTrap " << this->getName() << " has not enough energy points to attack!" << endl;
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
@@ -172,28 +159,21 @@ void ClapTrap::takeDamage(unsigned int amount)
 		if (amount > this->getHitPoints())
 			amount = this->getHitPoints();
 		cout << "ClapTrap " << this->getName() << " takes " << amount << " points of damage!" << endl;
-		ClapTrap::setHitPoints(getHitPoints() - amount);
-		return ;
+		this->setHitPoints(getHitPoints() - amount);
+		return;
 	}
 	cout << "ClapTrap " << this->getName() << " is dead" << endl;
-	ClapTrap::setHitPoints(0);
+	setHitPoints(0);
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
 {
-	if (!this->isEnergy())
+	if (this->isEnergy())
 	{
-		cout << "ClapTrap " << this->getName() << " has not enough energy points to be repaired!" << endl;
-		return ;
+		cout << "ClapTrap " << this->getName() << " is repaired for " << amount << " points of damage!" << endl;
+		setHitPoints(getHitPoints() + amount);
+		setEnergyPoints(getEnergyPoints() - 1);
+		return;
 	}
-	if (!this->isAlive())
-	{
-		cout << "ClapTrap " << this->getName() << " is dead, Claptraps can't be repaired when dead ..." << endl;
-		return ;
-	}
-	if (this->getHitPoints() + amount > 10)
-		amount = 10 - this->getHitPoints();
-	cout << "ClapTrap " << this->getName() << " is repaired for " << amount << " points of damage!" << endl;
-	ClapTrap::setHitPoints(getHitPoints() + amount);
-	ClapTrap::setEnergyPoints(getEnergyPoints() - 1);
+	cout << "ClapTrap " << this->getName() << " has not enough energy points to be repaired!" << endl;
 }

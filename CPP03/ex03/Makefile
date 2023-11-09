@@ -6,13 +6,13 @@
 #    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2023/10/24 22:22:50 by maroy            ###   ########.fr        #
+#    Updated: 2023/10/24 22:22:34 by maroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = ex03
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -fsanitize=address
 CC = c++
 
 # Directories
@@ -23,8 +23,6 @@ BUILD_DIR = bin
 # Source files and object files
 SRCS = $(shell find $(SRC_DIR) -iname "*.cpp")
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-
-
 
 # Default target
 all: directories $(BUILD_DIR)/$(NAME)

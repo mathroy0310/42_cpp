@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                     ██   ██ ██████         */
-/*   main.cpp                                          ██   ██      ██        */
+/*   ScavTrap.hpp                                      ██   ██      ██        */
 /*                                                     ███████  █████         */
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/19 12:55:09 by maroy                                    */
-/*   Updated: 2023/10/19 13:26:45 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Created: 2023/10/19 13:30:26 by maroy                                    */
+/*   Updated: 2023/10/19 15:07:26 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
-#include "../inc/ClapTrap.hpp"
-#include "../inc/common.hpp"
+#pragma once
 
-int main(void)
-{
-	ClapTrap claptrap("proute");
-	while (claptrap.isAlive())
-	{
-		claptrap.attack("target");
-		claptrap.takeDamage(1);
-		claptrap.beRepaired(1);
-		claptrap.printStatus();
-	}
+#ifndef SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
-	return (0);
-}
+#include "common.hpp"
+# include "ClapTrap.hpp"
+
+class ScavTrap: public ClapTrap{
+	
+	public:
+		ScavTrap();
+		ScavTrap( string name );
+		ScavTrap( ScavTrap const & src );
+		
+		~ScavTrap();
+		
+		void			printStatus( void );
+		void 			attack( string const & target );
+		void			guardGate( void );
+};
+
+#endif // SCAVTRAP_HPP

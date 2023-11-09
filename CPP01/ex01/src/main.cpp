@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.qc>                        ██ ██             */
 /*                                                          ██ ███████.qc     */
 /*   Created: 2023/10/14 16:52:32 by maroy                                    */
-/*   Updated: 2023/11/04 13:26:14 by maroy            >(.)__ <(.)__ =(.)__    */
+/*   Updated: 2023/11/04 13:25:27 by maroy            >(.)__ <(.)__ =(.)__    */
 /*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ int	main(void)
 	zombie = zombieHorde(5, "Maroy");
 	for (int i = 0; i < 5; i++)
 		zombie[i].announce();
-	delete[] zombie;
+	delete [] zombie;
 	return (0);
 }

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   WrongAnimal.class.cpp                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 19:29:39 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:12:46 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   WrongAnimal.class.cpp                             ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 19:29:39 by maroy                                    */
+/*   Updated: 2023/11/11 14:20:53 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "WrongAnimal.class.hpp"
@@ -36,7 +36,7 @@ WrongAnimal::~WrongAnimal()
 
 void WrongAnimal::makeSound() const
 {
-	cout << "WrongAnimal makeSound called" << endl;
+	cout << ANSI_COLOR_BRIGHT_MAGENTA << "WrongAnimal sound ..." << ANSI_COLOR_RESET << endl;
 }
 
 string WrongAnimal::getType() const

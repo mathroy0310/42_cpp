@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Cat.class.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:48:37 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:12:43 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Cat.class.cpp                                     ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:48:37 by maroy                                    */
+/*   Updated: 2023/11/11 14:39:05 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Cat.class.hpp"
 
 Cat::Cat()
 {
+	cout << "Cat default constructor" << endl;
 	setType("Cat");
 }
 
@@ -37,5 +38,5 @@ Cat &Cat::operator=(Cat const &src)
 
 void Cat::makeSound() const
 {
-	cout << "Meow! I'm a cat." << endl;
+	cout << ANSI_COLOR_GREEN  << "Meow! I'm a cat." << ANSI_COLOR_RESET << endl;
 }

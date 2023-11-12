@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Cat.class.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:42:40 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 21:58:13 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Cat.class.hpp                                     ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:42:40 by maroy                                    */
+/*   Updated: 2023/11/11 16:42:17 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
@@ -30,8 +30,8 @@ public:
 
 	void makeSound() const;
 	Brain *getBrain(void) const;
-	void compareTo(Cat const &other_cat) const;
-
+	void giveIdea(string idea);
+	void takeIdea(void) const;
 private:
 	string _type;
 	Brain *_brain;

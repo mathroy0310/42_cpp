@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Cat.class.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:48:37 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:06:22 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Cat.class.cpp                                     ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:48:37 by maroy                                    */
+/*   Updated: 2023/11/11 16:34:37 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Cat.class.hpp"
@@ -18,6 +18,7 @@
 
 Cat::Cat()
 {
+	cout << "Cat default constructor" << endl;
 	setType("Cat");
 	this->_brain = new Brain();
 }
@@ -65,21 +66,21 @@ Brain *Cat::getBrain(void) const
 
 void Cat::makeSound() const
 {
-	cout << "Meow! I'm a cat." << endl;
+	cout << ANSI_COLOR_GREEN << "Meow! I'm a cat." << ANSI_COLOR_RESET << endl;
 }
 
-void Cat::compareTo(Cat const &other_cat) const
+void Cat::giveIdea(string idea)
 {
-	cout << endl;
-	cout << "Now comparing two cats\n";
-	cout << "My brain's heap address: " << static_cast<void *>(this->_brain) << endl;
-	cout << "Other's heap address: " << static_cast<void *>(other_cat.getBrain()) << endl;
-	cout << endl;
-	cout << "My brain's ideas \t\t | \t\t\t Other brain's ideas\n";
-	for (int i = 0; i < 100; i++)
-		cout << "-";
-	cout << endl;
-	for (int i = 0; i < 100; i++)
-		cout << ((this->_brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other_cat.getBrain())->getIdeas())[i] << endl;
-	cout << endl;
+	for (size_t i = 0; i < 100; i++)
+	{
+		if (this->_brain->getIdea(i) == "") {
+			this->_brain->setIdea(i, idea);
+			return ;
+		}
+	}
+	cout << "No more space in the brain of Cat" << endl;
+}
+void Cat::takeIdea( void ) const
+{
+	cout << "Cat's idea: " << this->_brain->getIdea(1) << endl;
 }

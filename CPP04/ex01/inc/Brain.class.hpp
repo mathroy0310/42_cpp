@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Brain.class.hpp                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 11:39:07 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:00:38 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Brain.class.hpp                                   ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/24 11:39:07 by maroy                                    */
+/*   Updated: 2023/11/11 17:01:53 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
@@ -26,8 +26,8 @@ public:
 
 	Brain &operator=(Brain const &ref);
 	// Setters - Getters
-	string *getIdeas(void);
-	void setIdeas(int i, string *ideas);
+	string getIdea(int i) const;
+	void setIdea(int i, string ideas);
 
 private:
 	string *_ideas;

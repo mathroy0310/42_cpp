@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.class.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:41:59 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 21:58:15 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Dog.class.hpp                                     ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:41:59 by maroy                                    */
+/*   Updated: 2023/11/11 16:58:35 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #pragma once
@@ -30,7 +30,8 @@ public:
 
 	void makeSound() const;
 	Brain *getBrain(void) const;
-	void compareTo(Dog const &other_dog) const;
+	void giveIdea(string idea);
+	void printIdeas( void ) const;
 
 private:
 	string _type;

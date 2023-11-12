@@ -1,51 +1,48 @@
 # **************************************************************************** #
 #                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2023/10/24 22:19:11 by maroy            ###   ########.fr        #
-#                                                                              #
+#                                                      ██   ██ ██████          #
+#    Makefile                                          ██   ██      ██         #
+#                                                      ███████  █████          #
+#    By: maroy <maroy@student.42.qc>                        ██ ██              #
+#                                                           ██ ███████.qc      #
+#    Created: 2023/09/02 20:07:36 by maroy                                     #
+#    Updated: 2023/11/09 17:15:02 by maroy            >(.)__ <(.)__ =(.)__     #
+#                                                      (___/  (___/  (___/     #
 # **************************************************************************** #
 
 NAME = ex02
 
-CPPFLAGS = -Wall -Werror -Wextra -Wshadow -std=c++98 -fsanitize=address -g3
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 CC = c++
 
 # Directories
 SRC_DIR = src
-INC_DIR = inc
 OBJ_DIR = obj
-BUILD_DIR = bin
+INC_DIR = inc
 
 # Source files and object files
 SRCS = $(shell find $(SRC_DIR) -iname "*.cpp")
 OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
 
 # Default target
-all: directories $(BUILD_DIR)/$(NAME)
-	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
-	
-# Debug target
-# debug: CPPFLAGS += -DDEBUG=1 -g
-# debug: re
-# 	@echo "$(GREEN)$(NAME) created in debug mode !$(DEFAULT)"
+all: $(OBJ_DIR) $(NAME)
 
 # Create necessary directories
-directories:
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@mkdir -p $(BUILD_DIR)
 
 # Build the executable
-$(BUILD_DIR)/$(NAME): $(OBJS)
-	@$(CC) $(CPPFLAGS) -I$(INC_DIR)  $(OBJS) -o $@
+$(NAME): $(OBJS)
+	@$(CC) $(CPPFLAGS) $(OBJS) -o $@
+	@echo "$(GREEN)$(NAME) created !$(DEFAULT)"
 
 # Compile the source files into object files
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
-	@$(CC) $(CPPFLAGS) -I$(INC_DIR) -c $< -o $@
+	@$(CC) $(CPPFLAGS) -c $< -o $@
+
+leak: CPPFLAGS += -g3
+leak: re
+	@leaks --atExit -- ./$(NAME)
 
 # Clean object files
 clean:
@@ -54,7 +51,7 @@ clean:
 
 # Clean object files and the executable
 fclean: clean
-	@rm -rf $(BUILD_DIR)
+	@rm -rf $(NAME)
 	@echo	"$(RED)All deleted!$(DEFAULT)"
 
 # Rebuild everything

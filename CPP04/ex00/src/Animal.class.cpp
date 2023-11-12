@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Animal.class.cpp                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:41:14 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:17:12 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Animal.class.cpp                                  ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:41:14 by maroy                                    */
+/*   Updated: 2023/11/11 14:21:00 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Animal.class.hpp"
@@ -36,7 +36,7 @@ Animal &Animal::operator=(Animal const &src)
 }
 void Animal::makeSound() const
 {
-	cout << "Animal makeSound called" << endl;
+	cout << "Animal sound ..." << endl;
 }
 
 string Animal::getType() const

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Dog.class.cpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 18:49:40 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:07:00 by maroy            ###   ########.fr       */
-/*                                                                            */
+/*                                                     ██   ██ ██████         */
+/*   Dog.class.cpp                                     ██   ██      ██        */
+/*                                                     ███████  █████         */
+/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
+/*                                                          ██ ███████.qc     */
+/*   Created: 2023/10/20 18:49:40 by maroy                                    */
+/*   Updated: 2023/11/11 17:12:13 by maroy            >(.)__ <(.)__ =(.)__    */
+/*                                                     (___/  (___/  (___/    */
 /* ************************************************************************** */
 
 #include "Dog.class.hpp"
@@ -18,6 +18,7 @@
 
 Dog::Dog()
 {
+	cout << "Dog default constructor" << endl;
 	setType("Dog");
 	this->_brain = new Brain();
 }
@@ -65,21 +66,30 @@ Brain *Dog::getBrain(void) const
 
 void Dog::makeSound() const
 {
-	cout << "Woof! I'm a Dog." << endl;
+	cout << ANSI_COLOR_CYAN << "Woof! I'm a Dog." << ANSI_COLOR_RESET << endl;
 }
 
-void Dog::compareTo(Dog const &other_dog) const
+void Dog::giveIdea(string idea)
 {
-	cout << endl;
-	cout << "Now comparing two dogs\n";
-	cout << "My brain's heap address: " << static_cast<void *>(this->_brain) << endl;
-	cout << "Other's heap address: " << static_cast<void *>(other_dog.getBrain()) << endl;
-	cout << endl;
-	cout << "My brain's ideas \t\t | \t\t\t Other brain's ideas\n";
-	for (int i = 0; i < 100; i++)
-		cout << "-";
-	cout << endl;
-	for (int i = 0; i < 100; i++)
-		cout << ((this->_brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other_dog.getBrain())->getIdeas())[i] << endl;
-	cout << endl;
+	for (size_t i = 0; i < 100; i++)
+	{
+		if (this->_brain->getIdea(i) == "") {
+			this->_brain->setIdea(i, idea);
+			return ;
+		}
+	}
+	cout << "No more space in the brain of Dog" << endl;
+}
+
+void Dog::printIdeas( void ) const
+{
+	string idea;
+	cout << "Dog's ideas:" << endl;
+	for (size_t i = 0; i < 100; i++)
+	{
+		idea = this->_brain->getIdea(i);
+		if (idea.empty())
+			return ;
+		cout << "Idea " << i << ": " << idea << endl;
+	}
 }

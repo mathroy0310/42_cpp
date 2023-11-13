@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                     ██   ██ ██████         */
-/*   Dog.class.hpp                                     ██   ██      ██        */
-/*                                                     ███████  █████         */
-/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
-/*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/20 18:41:59 by maroy                                    */
-/*   Updated: 2023/11/11 16:58:35 by maroy            >(.)__ <(.)__ =(.)__    */
-/*                                                     (___/  (___/  (___/    */
+/*                                                        :::      ::::::::   */
+/*   Dog.class.hpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 18:41:59 by maroy             #+#    #+#             */
+/*   Updated: 2023/11/13 18:05:54 by maroy            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
@@ -21,21 +21,22 @@
 
 class Dog : public Animal
 {
-public:
-	Dog();
-	Dog(Dog const &src);
-	~Dog();
+  public:
+    Dog();
+    Dog(Dog &ref);
+    ~Dog();
 
-	Dog &operator=(Dog const &src);
+    Dog &operator=(Dog const &src);
 
-	void makeSound() const;
-	Brain *getBrain(void) const;
-	void giveIdea(string idea);
-	void printIdeas( void ) const;
+    void   makeSound() const;
+    void   giveIdea(string idea);
+    Brain *getBrain(void) const;
+    void   printIdeas(void) const;
+    bool   isAbstract() const;
 
-private:
-	string _type;
-	Brain *_brain;
+  private:
+    string _type;
+    Brain *_brain;
 };
 
 #endif // DOG_H

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:41:59 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:19:40 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:56:56 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,22 @@
 
 class Dog : public AAnimal
 {
-public:
-	Dog();
-	Dog(Dog const &src);
-	~Dog();
+  public:
+    Dog();
+    Dog(Dog &ref);
+    ~Dog();
 
-	Dog &operator=(Dog const &src);
+    Dog &operator=(Dog const &src);
 
-	void makeSound() const;
-	Brain *getBrain(void) const;
-	void compareTo(Dog const &other_dog) const;
+    void   makeSound() const;
+    void   giveIdea(string idea);
+    Brain *getBrain(void) const;
+    void   printIdeas(void) const;
+    bool   isAbstract() const;
 
-private:
-	string _type;
-	Brain *_brain;
+  private:
+    string _type;
+    Brain *_brain;
 };
 
 #endif // DOG_H

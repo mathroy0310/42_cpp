@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:32:38 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:12:47 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 18:03:49 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,30 @@
 
 WrongCat::WrongCat()
 {
-	cout << "WrongCat default constructor called" << endl;
-	this->_type = "WrongCat";
+    cout << "WrongCat default constructor called" << endl;
+    this->_type = "WrongCat";
 }
 
-WrongCat::WrongCat(WrongCat const &src)
+WrongCat::WrongCat(WrongCat const &src) : WrongAnimal(src)
 {
-	cout << "WrongCat copy constructor called" << endl;
-	*this = src;
+    cout << "WrongCat copy constructor called" << endl;
+    *this = src;
 }
 
 WrongCat::~WrongCat()
 {
-	cout << "WrongCat destructor called" << endl;
+    cout << "WrongCat destructor called" << endl;
 }
 
-WrongCat &WrongCat::operator=(WrongCat const &src)
+WrongCat &
+WrongCat::operator=(WrongCat const &src)
 {
-	this->_type = src.getType();
-	return (*this);
+    this->_type = src.getType();
+    return (*this);
 }
 
-void WrongCat::makeSound() const
+void
+WrongCat::makeSound() const
 {
-	cout << "miaw miaw Im a WrongCat" << endl;
+    cout << "miaw miaw Im a WrongCat" << endl;
 }

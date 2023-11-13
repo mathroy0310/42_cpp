@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AAAnimal.class.cpp                                  :+:      :+:    :+:   */
+/*   AAnimal.class.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:41:14 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:16:52 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 17:43:03 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,60 @@
 
 AAnimal::AAnimal()
 {
-	this->_type = "regular AAnimal";
-	// cout << "AAnimal default constructor called" << endl;
+    // cout << "Animal default constructor called" << endl;
+    this->_type = "regular Animal";
 }
 
 AAnimal::AAnimal(AAnimal const &src)
 {
-	// cout << "AAnimal copy constructor called" << endl;
-	*this = src;
+    // cout << "Animal copy constructor called" << endl;
+    *this = src;
 }
 
 AAnimal::~AAnimal()
 {
-	// cout << "AAnimal destructor called" << endl;
+    // cout << "Animal destructor called" << endl;
 }
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
 
-AAnimal &AAnimal::operator=(AAnimal const &src)
+AAnimal &
+AAnimal::operator=(AAnimal const &src)
 {
-	this->_type = src.getType();
-	return (*this);
+    this->_type = src.getType();
+    return (*this);
 }
 
 ///////////////////////////////
 ///		MEMBER FONCTIONS	///
 ///////////////////////////////
 
-// void AAnimal::makeSound() const
+// void
+// AAnimal::makeSound() const
 // {
-// 	cout << "AAnimal sound ..." << endl;
+//     cout << "AAnimal sound ..." << endl;
 // }
 
 ///////////////////////////////
 ///		Setters & Getters	///
 ///////////////////////////////
 
-string AAnimal::getType() const
+string
+AAnimal::getType() const
 {
-	return (this->_type);
+    return (this->_type);
 }
 
-void AAnimal::setType(string type)
+void
+AAnimal::setType(string type)
 {
-	this->_type = type;
+    this->_type = type;
+}
+
+bool
+AAnimal::isAbstract(void) const
+{
+    return (false);
 }

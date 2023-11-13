@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:42:40 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:19:42 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 16:54:55 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,22 @@
 
 class Cat : public AAnimal
 {
-public:
-	Cat();
-	Cat(Cat const &src);
-	~Cat();
+  public:
+    Cat();
+    Cat(Cat &ref);
+    ~Cat();
 
-	Cat &operator=(Cat const &src);
+    Cat &operator=(Cat const &src);
 
-	void makeSound() const;
-	Brain *getBrain(void) const;
-	void compareTo(Cat const &other_cat) const;
+    void   makeSound() const;
+    void   giveIdea(string idea);
+    Brain *getBrain(void) const;
+    void   printIdeas() const;
+    bool   isAbstract() const;
 
-private:
-	string _type;
-	Brain *_brain;
+  private:
+    string _type;
+    Brain *_brain;
 };
 
 #endif // CAT_H

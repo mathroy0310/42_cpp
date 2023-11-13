@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:41:59 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:12:53 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 18:03:59 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@
 
 class Dog : public Animal
 {
+  public:
+    Dog();
+    Dog(Dog const &src);
+    ~Dog();
 
-public:
-	Dog();
-	Dog(Dog const &src);
-	~Dog();
+    Dog &operator=(Dog const &src);
 
-	Dog &operator=(Dog const &src);
+    void makeSound() const;
 
-	void makeSound() const;
-
-private:
-	string _type;
+  private:
+    string _type;
 };
 
 #endif // DOG_H

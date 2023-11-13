@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:42:43 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:12:57 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 18:04:04 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@
 
 class Animal
 {
+  public:
+    Animal();
+    Animal(Animal const &src);
+    virtual ~Animal();
 
-public:
-	Animal();
-	Animal(Animal const &src);
-	virtual ~Animal();
+    Animal &operator=(Animal const &src);
 
-	Animal &operator=(Animal const &src);
+    void   setType(string type);
+    string getType(void) const;
 
-	virtual void makeSound() const;
-	string getType() const;
-	void setType(string type);
+    virtual void makeSound(void) const;
 
-protected:
-	string _type;
+  protected:
+    string _type;
 };
 
 #endif // ANIMAL_H

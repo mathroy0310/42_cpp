@@ -20,19 +20,18 @@
 
 class WrongAnimal
 {
+  public:
+    WrongAnimal();
+    ~WrongAnimal();
+    WrongAnimal(WrongAnimal const &src);
 
-public:
-	WrongAnimal();
-	~WrongAnimal();
-	WrongAnimal(WrongAnimal const &src);
+    WrongAnimal &operator=(WrongAnimal const &src);
 
-	WrongAnimal &operator=(WrongAnimal const &src);
+    void   makeSound() const;
+    string getType() const;
 
-	void makeSound() const;
-	string getType() const;
-
-protected:
-	string _type;
+  protected:
+    string _type;
 };
 
 #endif // WRONGANIMAL_H

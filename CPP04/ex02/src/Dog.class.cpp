@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:49:40 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:20:23 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 17:38:05 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,68 +18,86 @@
 
 Dog::Dog()
 {
-	setType("Dog");
-	this->_brain = new Brain();
+    cout << "Dog default constructor" << endl;
+    setType("Dog");
+    this->_brain = new Brain();
 }
 
-Dog::Dog(Dog const &src) : AAnimal(src)
+Dog::Dog(Dog &ref) : AAnimal(ref)
 {
-	cout << "Dog copy constructor" << endl;
-	*this = src;
+    cout << "Dog copy constructor" << endl;
+    setType(ref.getType());
+    this->_brain = new Brain(*(ref.getBrain()));
 }
 
 Dog::~Dog()
 {
-	cout << "Dog destructor" << endl;
-	delete this->_brain;
+    cout << "Dog destructor" << endl;
+    if (this->_brain)
+        delete this->_brain;
 }
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
 
-Dog &Dog::operator=(Dog const &src)
+Dog &
+Dog::operator=(Dog const &src)
 {
-	if (this != &src)
-	{
-		if (this->_brain)
-			delete (this->_brain);
-		this->_brain = new Brain;
-		this->_type = src.getType();
-	}
-	return (*this);
+    cout << "Dog Copy Operator" << endl;
+    this->_type = src.getType();
+    if (this->_brain)
+        delete (this->_brain);
+    this->_brain = new Brain(*(src.getBrain()));
+    return *this;
 }
 
-///////////////////////////////
-///		Getters				///
-///////////////////////////////
-
-Brain *Dog::getBrain(void) const
+Brain *
+Dog::getBrain(void) const
 {
-	return (this->_brain);
+    return (this->_brain);
 }
 
 ///////////////////////////////
 ///		MEMBER FONCTIONS	///
 ///////////////////////////////
 
-void Dog::makeSound() const
+void
+Dog::makeSound() const
 {
-	cout << "Woof! I'm a Dog." << endl;
+    cout << ANSI_COLOR_CYAN << "Woof! I'm a Dog." << ANSI_COLOR_RESET << endl;
 }
 
-void Dog::compareTo(Dog const &other_dog) const
+void
+Dog::giveIdea(string idea)
 {
-	cout << endl;
-	cout << "Now comparing two dogs\n";
-	cout << "My brain's heap address: " << static_cast<void *>(this->_brain) << endl;
-	cout << "Other's heap address: " << static_cast<void *>(other_dog.getBrain()) << endl;
-	cout << endl;
-	cout << "My brain's ideas \t\t | \t\t\t Other brain's ideas\n";
-	for (int i = 0; i < 100; i++)
-		cout << "-";
-	cout << endl;
-	for (int i = 0; i < 100; i++)
-		cout << ((this->_brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other_dog.getBrain())->getIdeas())[i] << endl;
-	cout << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        if (this->_brain->getIdea(i) == "")
+        {
+            this->_brain->setIdea(i, idea);
+            return;
+        }
+    }
+    cout << "No more space in the brain of Dog" << endl;
+}
+
+void
+Dog::printIdeas(void) const
+{
+    string str;
+    cout << "Dog's ideas:" << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        str = this->_brain->getIdea(i);
+        if (str.empty())
+            return;
+        cout << ANSI_COLOR_BRIGHT_MAGENTA << str << ANSI_COLOR_RESET << endl;
+    }
+}
+
+bool
+Dog::isAbstract(void) const
+{
+    return (true);
 }

@@ -1,13 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                     ██   ██ ██████         */
-/*   Dog.class.cpp                                     ██   ██      ██        */
-/*                                                     ███████  █████         */
-/*   By: maroy <maroy@student.42.qc>                        ██ ██             */
-/*                                                          ██ ███████.qc     */
-/*   Created: 2023/10/20 18:49:40 by maroy                                    */
-/*   Updated: 2023/11/11 17:12:13 by maroy            >(.)__ <(.)__ =(.)__    */
-/*                                                     (___/  (___/  (___/    */
+/*                                                        :::      ::::::::   */
+/*   Dog.class.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/20 18:49:40 by maroy             #+#    #+#             */
+/*   Updated: 2023/11/13 18:06:06 by maroy            ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.class.hpp"
@@ -18,78 +18,80 @@
 
 Dog::Dog()
 {
-	cout << "Dog default constructor" << endl;
-	setType("Dog");
-	this->_brain = new Brain();
+    cout << "Dog default constructor" << endl;
+    setType("Dog");
+    this->_brain = new Brain();
 }
 
-Dog::Dog(Dog const &src) : Animal(src)
+Dog::Dog(Dog &ref) : Animal(ref)
 {
-	cout << "Dog copy constructor" << endl;
-	*this = src;
+    cout << "Dog copy constructor" << endl;
+    setType(ref.getType());
+    this->_brain = new Brain(*(ref.getBrain()));
 }
 
 Dog::~Dog()
 {
-	cout << "Dog destructor" << endl;
-	delete this->_brain;
+    cout << "Dog destructor" << endl;
+    if (this->_brain)
+        delete this->_brain;
 }
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
 
-Dog &Dog::operator=(Dog const &src)
+Dog &
+Dog::operator=(Dog const &src)
 {
-	if (this != &src)
-	{
-		if (this->_brain)
-			delete (this->_brain);
-		this->_brain = new Brain;
-		this->_type = src.getType();
-	}
-	return (*this);
+    cout << "Dog Copy Operator" << endl;
+    this->_type = src.getType();
+    if (this->_brain)
+        delete (this->_brain);
+    this->_brain = new Brain(*(src.getBrain()));
+    return *this;
 }
 
-///////////////////////////////
-///		Getters				///
-///////////////////////////////
-
-Brain *Dog::getBrain(void) const
+Brain *
+Dog::getBrain(void) const
 {
-	return (this->_brain);
+    return (this->_brain);
 }
 
 ///////////////////////////////
 ///		MEMBER FONCTIONS	///
 ///////////////////////////////
 
-void Dog::makeSound() const
+void
+Dog::makeSound() const
 {
-	cout << ANSI_COLOR_CYAN << "Woof! I'm a Dog." << ANSI_COLOR_RESET << endl;
+    cout << ANSI_COLOR_CYAN << "Woof! I'm a Dog." << ANSI_COLOR_RESET << endl;
 }
 
-void Dog::giveIdea(string idea)
+void
+Dog::giveIdea(string idea)
 {
-	for (size_t i = 0; i < 100; i++)
-	{
-		if (this->_brain->getIdea(i) == "") {
-			this->_brain->setIdea(i, idea);
-			return ;
-		}
-	}
-	cout << "No more space in the brain of Dog" << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        if (this->_brain->getIdea(i) == "")
+        {
+            this->_brain->setIdea(i, idea);
+            return;
+        }
+    }
+    cout << "No more space in the brain of Dog" << endl;
 }
 
-void Dog::printIdeas( void ) const
+void
+Dog::printIdeas(void) const
 {
-	string idea;
-	cout << "Dog's ideas:" << endl;
-	for (size_t i = 0; i < 100; i++)
-	{
-		idea = this->_brain->getIdea(i);
-		if (idea.empty())
-			return ;
-		cout << "Idea " << i << ": " << idea << endl;
-	}
+    string str;
+    cout << "Dog's ideas:" << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        str = this->_brain->getIdea(i);
+        if (str.empty())
+            return;
+        cout << ANSI_COLOR_BRIGHT_MAGENTA << str << ANSI_COLOR_RESET << endl;
+    }
 }

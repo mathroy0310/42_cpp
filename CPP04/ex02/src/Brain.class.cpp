@@ -18,47 +18,69 @@
 
 Brain::Brain()
 {
-	// cout << "Brain default constructor called" << endl;
-	this->_ideas = new string[100];
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = "Ricard...";
+    cout << "Brain default constructor called" << endl;
+    this->_ideas = new string[100];
 }
 
 Brain::Brain(Brain &ref)
 {
-	string *ref_ideas = ref.getIdeas();
-	this->_ideas = new string[100];
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = ref_ideas[i] + " stolen";
+    cout << "Brain copy constructor called" << endl;
+    this->_ideas = new string[100];
+    for (int i = 0; i < 100; i++)
+    {
+		if (ref.getIdea(i) == "")
+			break;
+		this->_ideas[i] = ref._ideas[i] + " (copied)";
+    }
 }
 
 Brain::~Brain()
 {
-	// cout << "Brain destructor called" << endl;
-	delete[] (this->_ideas);
+    cout << "Brain destructor called" << endl;
+    if (this->_ideas)
+        delete[] this->_ideas;
 }
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
 
-Brain &Brain::operator=(Brain const &rhs)
+Brain &
+Brain::operator=(Brain const &rhs)
 {
-	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = rhs._ideas[i];
-	return (*this);
+    for (int i = 0; i < 100; i++)
+    {
+        if (this->getIdea(i) == "")
+        {
+            this->_ideas[i] = rhs._ideas[i];
+			return (*this);
+        }
+    }
+    return (*this);
 }
 
 ///////////////////////////
 ///	Setters & Getters	///
 ///////////////////////////
 
-string *Brain::getIdeas(void)
+string
+Brain::getIdea(unsigned int i) const
 {
-	return (this->_ideas);
+    if (i > 99)
+    {
+        cout << "Can't get idea " << i << ". Index out of range!" << endl;
+        return "";
+    }
+    return (this->_ideas[i]);
 }
 
-void Brain::setIdeas(int i, string *ideas)
+void
+Brain::setIdea(unsigned int i, string ideas)
 {
-	this->_ideas[i] = ideas[i];
+    if (i > 99)
+    {
+        cout << "Can't set idea " << i << ". Index out of range!" << endl;
+        return;
+    }
+    this->_ideas[i] = ideas;
 }

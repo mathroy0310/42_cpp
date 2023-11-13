@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 18:48:37 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:20:14 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 17:34:11 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,68 +18,86 @@
 
 Cat::Cat()
 {
-	setType("Cat");
-	this->_brain = new Brain();
+    cout << "Cat default constructor" << endl;
+    setType("Cat");
+    this->_brain = new Brain();
 }
 
-Cat::Cat(Cat const &src) : AAnimal(src)
+Cat::Cat(Cat &ref) : AAnimal(ref)
 {
-	cout << "Cat copy constructor" << endl;
-	*this = src;
+    cout << "Cat copy constructor" << endl;
+    setType(ref.getType());
+    this->_brain = new Brain(*(ref.getBrain()));
 }
 
 Cat::~Cat()
 {
-	cout << "Cat destructor" << endl;
-	delete this->_brain;
+    cout << "Cat destructor" << endl;
+    if (this->_brain)
+        delete this->_brain;
 }
 
 ///////////////////////////
 ///		OPERATORS		///
 ///////////////////////////
 
-Cat &Cat::operator=(Cat const &src)
+Cat &
+Cat::operator=(Cat const &src)
 {
-	if (this != &src)
-	{
-		if (this->_brain)
-			delete (this->_brain);
-		this->_brain = new Brain;
-		this->_type = src.getType();
-	}
-	return (*this);
+    cout << "Cat Copy Operator" << endl;
+    this->_type     = src.getType();
+	if (this->_brain)
+		delete (this->_brain);
+	this->_brain = new Brain(*(src.getBrain()));
+    return (*this);
 }
 
-///////////////////////////////
-///		GETTERS				///
-///////////////////////////////
-
-Brain *Cat::getBrain(void) const
+Brain *
+Cat::getBrain(void) const
 {
-	return (this->_brain);
+    return (this->_brain);
 }
 
 ///////////////////////////////
 ///		MEMBER FONCTIONS	///
 ///////////////////////////////
 
-void Cat::makeSound() const
+void
+Cat::makeSound() const
 {
-	cout << "Meow! I'm a cat." << endl;
+    cout << ANSI_COLOR_GREEN << "Meow! I'm a cat." << ANSI_COLOR_RESET << endl;
 }
 
-void Cat::compareTo(Cat const &other_cat) const
+void
+Cat::giveIdea(string idea)
 {
-	cout << endl;
-	cout << "Now comparing two cats\n";
-	cout << "My brain's heap address: " << static_cast<void *>(this->_brain) << endl;
-	cout << "Other's heap address: " << static_cast<void *>(other_cat.getBrain()) << endl;
-	cout << endl;
-	cout << "My brain's ideas \t\t | \t\t\t Other brain's ideas\n";
-	for (int i = 0; i < 100; i++)
-		cout << "-";
-	cout << endl;
-	for (int i = 0; i < 100; i++)
-		cout << ((this->_brain)->getIdeas())[i] << "\t\t\t | \t\t\t" << ((other_cat.getBrain())->getIdeas())[i] << endl;
-	cout << endl;
+    for (size_t i = 0; i < 100; i++)
+    {
+        if (this->_brain->getIdea(i) == "")
+        {
+            this->_brain->setIdea(i, idea);
+            return;
+        }
+    }
+    cout << "No more space in the brain of Cat" << endl;
+}
+
+void
+Cat::printIdeas(void) const
+{
+    string str;
+    cout << "Cat's ideas:" << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        str = this->_brain->getIdea(i);
+        if (str.empty())
+            return;
+        cout << ANSI_COLOR_BRIGHT_MAGENTA << str << ANSI_COLOR_RESET << endl;
+    }
+}
+
+bool
+Cat::isAbstract(void) const
+{
+    return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/24 11:39:07 by maroy             #+#    #+#             */
-/*   Updated: 2023/10/24 22:00:38 by maroy            ###   ########.fr       */
+/*   Updated: 2023/11/13 15:51:29 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@
 
 class Brain
 {
-public:
-	Brain();
-	Brain(Brain &rhs);
-	~Brain();
+  public:
+    Brain();
+    Brain(Brain &ref);
+    ~Brain();
 
-	Brain &operator=(Brain const &ref);
-	// Setters - Getters
-	string *getIdeas(void);
-	void setIdeas(int i, string *ideas);
+    Brain &operator=(Brain const &rhs);
+    // Getters - Setters
+    string getIdea(unsigned int i) const;
+    void   setIdea(unsigned int i, string ideas);
 
-private:
-	string *_ideas;
+  private:
+    string *_ideas;
 };
 
 #endif // BRAIN_HPP

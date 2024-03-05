@@ -1,57 +1,6 @@
 # Ignore build and compiled files
 *.o
 *.out
-*.exe
-*.so
-*.dll
-*.a
-*.dylib
-*.bin
-*.hex
-*ex*
-
-# Ignore compiled C headers
-*.gch
-
-# Ignore generated documentation files
-doc/
-docs/
 
 # Ignore directories created by build tools
-build/
-bin/
-out/
-Debug/
-Release/
-
-# Ignore editor and IDE specific files
-.vscode/
-.idea/
-*.suo
-*.user
-*.sdf
-
-# Ignore text editor backup files
-*~
-
-# Ignore macOS metadata files
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Ignore Linux Thumbs.db files
-Thumbs.db
-
-# Ignore Visual Studio files
-*.suo
-*.user
-*.sdf
-*.opensdf
-*.dbmdl
-*.dbproj.user
-*.sln.docstates
-
-# Ignore Code::Blocks files
-*.depend
-*.layout
-*.d
+obj/

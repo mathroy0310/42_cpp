@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:12:58 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:11:19 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 00:17:29 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,33 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("Default"), _signed(false), _gradeToSign(ECHELON_MAX / 2), _gradeToExecute(ECHELON_MAX / 2) {}
+Form::Form() : _name("Default"), _signed(false), _gradeToSign(GRADE_MAX / 2), _gradeToExecute(GRADE_MAX / 2) {
+    std::cout << "Form default constructor called" << std::endl;
+}
 
 Form::Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute)
     : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-    if (gradeToSign < ECHELON_MIN || gradeToExecute < ECHELON_MIN)
+    if (gradeToSign < GRADE_MIN || gradeToExecute < GRADE_MIN)
         throw Form::GradeTooHighException();
-    else if (gradeToSign > ECHELON_MAX || gradeToExecute > ECHELON_MAX)
+    else if (gradeToSign > GRADE_MAX || gradeToExecute > GRADE_MAX)
         throw Form::GradeTooLowException();
+
+    std::cout << "Form parameter constructor called" << std::endl;
 }
 
 Form::Form(const Form &src)
     : _name(src.getName()), _gradeToSign(src.getGradeToSign()), _gradeToExecute(src.getGradeToExecute()) {
     *this = src;
+    std::cout << "Form copy constructor called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {}
+Form::~Form() {
+    std::cout << "Form destructor called" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
@@ -49,9 +56,9 @@ Form &Form::operator=(Form const &rhs) {
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, Form const &i) {
-    o << "Name = " << i.getName() << ", Grade to Sign = " << i.getGradeToSign()
-      << ", Grade to Execute = " << i.getGradeToExecute() << ", Signed = " << i.getSigned() << std::endl;
+std::ostream &operator<<(std::ostream &o, Form const *a) {
+    o << std::boolalpha << "Form " << a->getName() << ":\n\tgrade-sign:\t" << a->getGradeToSign() << "\n\tgrade-exec:\t"
+      << a->getGradeToExecute() << "\n\tis signed:\t" << a->getSigned() << std::endl;
     return o;
 }
 
@@ -59,14 +66,12 @@ std::ostream &operator<<(std::ostream &o, Form const &i) {
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void Form::signForm(Bureaucrat &bureaucrat) {
-    if (this->getSigned() == false) {
-        if (bureaucrat.getEchelon() > this->getGradeToSign())
-            throw Form::GradeTooLowException();
-        this->_signed = true;
-        std::cout << COLOR_GREEN << bureaucrat.getName() << " signs " << this->getName() << COLOR_RESET << std::endl;
-    } else
+void Form::beSigned(const Bureaucrat &bureaucrat) {
+    if (this->_signed)
         throw Form::FormAlreadySignedException();
+    if (bureaucrat.getGrade() > this->_gradeToSign)
+        throw Form::GradeTooLowException();
+    this->_signed = true;
 }
 
 const std::string Form::getName(void) const {

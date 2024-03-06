@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:10 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:13:51 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/05 23:46:04 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <iostream>
 #include <string>
 
-#define ECHELON_MAX 150
-#define ECHELON_MIN 1
+#define GRADE_MAX 150
+#define GRADE_MIN 1
 
 #define COLOR_RESET "\x1b[0m"
 #define COLOR_RED "\x1b[31m"
@@ -30,21 +30,21 @@ class Form;
 class Bureaucrat {
   private:
     const std::string _name;
-    unsigned int _echelon;
+    unsigned int _grade;
 
   public:
     Bureaucrat();
     Bureaucrat(Bureaucrat const &src);
-    Bureaucrat(std::string name, unsigned int echelon);
+    Bureaucrat(std::string name, unsigned int grade);
     ~Bureaucrat();
 
     Bureaucrat &operator=(Bureaucrat const &rhs);
     std::string getName(void) const;
-    unsigned int getEchelon(void) const;
-    void incrementEchelon(void);
-    void decrementEchelon(void);
+    unsigned int getGrade(void) const;
+    void incrementGrade(void);
+    void decrementGrade(void);
 
-    void beSigned(Form &form);
+    void signForm(Form &form) const;
 
     class GradeTooHighException : public std::exception {
       public:

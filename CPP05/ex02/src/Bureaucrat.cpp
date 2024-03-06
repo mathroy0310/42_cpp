@@ -6,27 +6,27 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:08 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:11:05 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/05 23:15:42 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat() : _name("Default"), _echelon(ECHELON_MAX / 2) {
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(GRADE_MAX / 2) {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int echelon) : _name(name) {
-    if (echelon < ECHELON_MIN)
+Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
+    if (grade < GRADE_MIN)
         throw Bureaucrat::GradeTooHighException();
-    else if (echelon > ECHELON_MAX)
+    else if (grade > GRADE_MAX)
         throw Bureaucrat::GradeTooLowException();
-    this->_echelon = echelon;
+    this->_grade = grade;
     std::cout << "Parametric constructor called" << std::endl;
 }
 
@@ -51,27 +51,28 @@ std::string Bureaucrat::getName(void) const {
     return (this->_name);
 }
 
-unsigned int Bureaucrat::getEchelon(void) const {
-    return (this->_echelon);
+unsigned int Bureaucrat::getGrade(void) const {
+    return (this->_grade);
 }
 
-void Bureaucrat::decrementEchelon(void) {
-    if (this->_echelon == ECHELON_MAX)
+void Bureaucrat::decrementGrade(void) {
+    if (this->_grade == GRADE_MAX)
         throw Bureaucrat::GradeTooHighException();
-    this->_echelon++;
+    this->_grade++;
 }
 
-void Bureaucrat::incrementEchelon(void) {
-    if (this->_echelon == ECHELON_MIN)
+void Bureaucrat::incrementGrade(void) {
+    if (this->_grade == GRADE_MIN)
         throw Bureaucrat::GradeTooLowException();
-    this->_echelon--;
+    this->_grade--;
 }
 
-void Bureaucrat::beSigned(Form &form) {
+void Bureaucrat::signForm(Form &form) const {
     try {
-        form.signForm(*this);
+        form.beSigned(*this);
+        std::cout << this->_name << " signs " << form.getName() << std::endl;
     } catch (std::exception &e) {
-        std::cout << e.what() << std::endl;
+        std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 
@@ -81,12 +82,12 @@ void Bureaucrat::beSigned(Form &form) {
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs) {
     if (this != &rhs)
-        this->_echelon = rhs.getEchelon();
+        this->_grade = rhs.getGrade();
     return (*this);
 }
 
 std::ostream &operator<<(std::ostream &o, Bureaucrat const &i) {
-    o << i.getName() << ", bureaucrat grade " << i.getEchelon();
+    o << i.getName() << ", bureaucrat grade " << i.getGrade();
     return (o);
 }
 

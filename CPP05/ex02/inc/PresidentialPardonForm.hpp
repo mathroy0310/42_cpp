@@ -1,24 +1,32 @@
 #ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
-# include <iostream>
-# include <string>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include <iostream>
+#include <string>
 
-class PresidentialPardonForm
-{
+class Bureaucrat;
 
-	public:
+class Form;
 
-		PresidentialPardonForm();
-		PresidentialPardonForm( PresidentialPardonForm const & src );
-		~PresidentialPardonForm();
+class PresidentialPardonForm : public Form {
+  private:
+    const std::string _target;
 
-		PresidentialPardonForm &		operator=( PresidentialPardonForm const & rhs );
+  public:
+    PresidentialPardonForm();
+    PresidentialPardonForm(std::string target);
+    PresidentialPardonForm(PresidentialPardonForm const &src);
+    ~PresidentialPardonForm();
 
-	private:
+    PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);
 
+    void execute(Bureaucrat const &executor) const;
+
+    std::string getTarget(void) const;
 };
 
-std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i );
+std::ostream &operator<<(std::ostream &o, PresidentialPardonForm const &i);
 
 #endif /* ****************************************** PRESIDENTIALPARDONFORM_H */

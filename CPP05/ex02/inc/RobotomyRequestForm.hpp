@@ -1,24 +1,30 @@
 #ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
-# include <iostream>
-# include <string>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include <iostream>
+#include <string>
 
-class RobotomyRequestForm
-{
+class Bureaucrat;
+class Form;
 
-	public:
+class RobotomyRequestForm : public Form {
+  private:
+    const std::string _target;
 
-		RobotomyRequestForm();
-		RobotomyRequestForm( RobotomyRequestForm const & src );
-		~RobotomyRequestForm();
+  public:
+    RobotomyRequestForm();
+    RobotomyRequestForm(std::string target);
+    RobotomyRequestForm(RobotomyRequestForm const &src);
+    ~RobotomyRequestForm();
 
-		RobotomyRequestForm &		operator=( RobotomyRequestForm const & rhs );
+    RobotomyRequestForm &operator=(RobotomyRequestForm const &rhs);
 
-	private:
-
+    void execute(Bureaucrat const &executor) const;
+    std::string getTarget(void) const;
 };
 
-std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i );
+std::ostream &operator<<(std::ostream &o, RobotomyRequestForm const &i);
 
 #endif /* ********************************************* ROBOTOMYREQUESTFORM_H */

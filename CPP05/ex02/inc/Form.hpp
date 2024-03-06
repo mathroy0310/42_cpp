@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:13:09 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:13:59 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 00:28:38 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@
 #include <iostream>
 #include <string>
 
-#define ECHELON_MAX 150
-#define ECHELON_MIN 1
+#define GRADE_MAX 150
+#define GRADE_MIN 1
 
 #define COLOR_RESET "\x1b[0m"
 #define COLOR_RED "\x1b[31m"
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_GREEN "\x1b[32m"
+#define COLOR_BOLD "\x1b[1;37m"
 
 class Bureaucrat;
 
 class Form {
-  private:
+  protected:
     const std::string _name;
     bool _signed;
     const unsigned int _gradeToSign;
@@ -38,16 +39,19 @@ class Form {
     Form();
     Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
     Form(Form const &src);
-    ~Form();
+
+    virtual ~Form();
 
     Form &operator=(Form const &rhs);
 
-    void signForm(Bureaucrat &bureaucrat);
+    void beSigned(const Bureaucrat &bureaucrat);
 
     const std::string getName(void) const;
     unsigned int getGradeToSign(void) const;
     unsigned int getGradeToExecute(void) const;
     bool getSigned(void) const;
+
+    virtual void execute(Bureaucrat const &executor) const = 0;
 
     class GradeTooHighException : public std::exception {
       public:
@@ -65,6 +69,6 @@ class Form {
     };
 };
 
-std::ostream &operator<<(std::ostream &o, Form const &i);
+std::ostream &operator<<(std::ostream &o, Form const *a);
 
 #endif /* ************************************************************ FORM_H */

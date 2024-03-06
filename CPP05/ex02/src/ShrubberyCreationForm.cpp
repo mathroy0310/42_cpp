@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 00:10:02 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 00:29:51 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:28:46 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form("ShrubberyCreationForm", 145, 137), _target("default") {
+ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 145, 137), _target("default") {
     std::cout << "ShrubberyCreationForm default constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-    : Form("ShrubberyCreationForm", 145, 137), _target(target) {
+    : AForm("ShrubberyCreationForm", 145, 137), _target(target) {
     std::cout << "ShrubberyCreationForm parameter constructor called" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
-    : Form("ShrubberyCreationForm", 145, 137), _target(src.getTarget()) {
+    : AForm("ShrubberyCreationForm", 145, 137), _target(src.getTarget()) {
     std::cout << "ShrubberyCreationForm copy constructor called" << std::endl;
     *this = src;
 }
@@ -62,21 +62,28 @@ std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm const &i) {
 
 void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
     if (this->getSigned() == false)
-        throw Form::FormAlreadySignedException();
+        throw AForm::FormNotSignedException();
     else if (executor.getGrade() > this->getGradeToExecute())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     std::ofstream outfile((this->_target + "_shrubbery").c_str());
     if (outfile.is_open()) {
-        outfile << "           \\/ |    |/         \n"
-                   "        \\/ / \\||/  /_/___/_  \n"
-                   "  _\\__\\_\\   |  /_____/_     \n"
-                   "         \\  | /          /    \n"
-                   " __ _-----`  |{,-----------~   \n"
-                   "           \\ }{               \n"
-                   "             }{{               \n"
-                   "             }}{               \n"
-                   "             {{}               \n"
-                   "       , -=-~{ .-^- _          \n";
+        for (int i = 0; i < 30; i++) {
+            outfile << "                                  # #### ####\n"
+                       "                                ### \\/#|### |/####\n"
+                       "                               ##\\/#/ \\||/##/_/##/_#\n"
+                       "                             ###  \\/###|/ \\/ # ###\n"
+                       "                           ##_\\_#\\_\\## | #/###_/_####\n"
+                       "                          ## #### # \\ #| /  #### ##/##\n"
+                       "                           __#_--###`  |{,###---###-~\n"
+                       "                                     \\ }{\n"
+                       "                                      }}{\n"
+                       "                                      }}{\n"
+                       "                                      {{}\n"
+                       "                                , -=-~{ .-^- _\n"
+                       "                                      `}\n"
+                       "                                       {\n"
+                    << std::endl;
+        }
         outfile.close();
     }
     std::cout << COLOR_BOLD << executor.getName() << " Created a tree !" << COLOR_RESET << std::endl;

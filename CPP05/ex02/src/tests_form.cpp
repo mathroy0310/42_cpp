@@ -6,12 +6,12 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:25:30 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 00:30:26 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:30:34 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"

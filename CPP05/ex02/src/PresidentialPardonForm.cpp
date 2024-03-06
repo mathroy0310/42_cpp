@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
+/*   PresidentialPardonAForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 00:24:21 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 00:26:21 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:21:14 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("PresidentialPardonForm", 25, 5), _target("default") {
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), _target("default") {
     std::cout << "PresidentialPardonForm default constructor called" << std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src)
-    : Form("PresidentialPardonForm", 25, 5), _target(src.getTarget()) {
+    : AForm("PresidentialPardonForm", 25, 5), _target(src.getTarget()) {
     std::cout << "PresidentialPardonForm copy constructor called" << std::endl;
     *this = src;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
-    : Form("PresidentialPardonForm", 25, 5), _target(target) {
+    : AForm("PresidentialPardonForm", 25, 5), _target(target) {
     std::cout << "PresidentialPardonForm parameter constructor called" << std::endl;
 }
 
@@ -61,9 +61,9 @@ std::ostream &operator<<(std::ostream &o, PresidentialPardonForm const &i) {
 
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const {
     if (this->getSigned() == false) {
-        throw Form::FormAlreadySignedException();
+        throw AForm::FormNotSignedException();
     } else if (executor.getGrade() > this->getGradeToExecute()) {
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     } else {
         std::cout << COLOR_BOLD << this->_target << " has been pardoned by Zafod Beeblebrox" << COLOR_RESET
                   << std::endl;

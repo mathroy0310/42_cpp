@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:13:09 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 00:28:38 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:20:27 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-#define FORM_HPP
+#ifndef AFORM_HPP
+#define AFORM_HPP
 
 #include "Bureaucrat.hpp"
 #include <iostream>
@@ -28,7 +28,7 @@
 
 class Bureaucrat;
 
-class Form {
+class AForm {
   protected:
     const std::string _name;
     bool _signed;
@@ -36,13 +36,13 @@ class Form {
     const unsigned int _gradeToExecute;
 
   public:
-    Form();
-    Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
-    Form(Form const &src);
+    AForm();
+    AForm(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
+    AForm(AForm const &src);
 
-    virtual ~Form();
+    virtual ~AForm();
 
-    Form &operator=(Form const &rhs);
+    AForm &operator=(AForm const &rhs);
 
     void beSigned(const Bureaucrat &bureaucrat);
 
@@ -67,8 +67,13 @@ class Form {
       public:
         virtual const char *what() const throw();
     };
+
+    class FormNotSignedException : public std::exception {
+      public:
+        virtual const char *what() const throw();
+    };
 };
 
-std::ostream &operator<<(std::ostream &o, Form const *a);
+std::ostream &operator<<(std::ostream &o, AForm const *a);
 
-#endif /* ************************************************************ FORM_H */
+#endif /* ************************************************************ AFORM_H */

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:12:58 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:11:19 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 13:54:32 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() : _name("Default"), _signed(false), _gradeToSign(ECHELON_MAX / 2), _gradeToExecute(ECHELON_MAX / 2) {}
+Form::Form() : _name("Default"), _signed(false), _gradeToSign(ECHELON_MAX / 2), _gradeToExecute(ECHELON_MAX / 2) {
+	std::cout << "Form default constructor called" << std::endl;
+}
 
 Form::Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute)
     : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
@@ -25,18 +27,22 @@ Form::Form(const std::string name, const unsigned int gradeToSign, const unsigne
         throw Form::GradeTooHighException();
     else if (gradeToSign > ECHELON_MAX || gradeToExecute > ECHELON_MAX)
         throw Form::GradeTooLowException();
+	std::cout << "Form constructor called" << std::endl;
 }
 
 Form::Form(const Form &src)
     : _name(src.getName()), _gradeToSign(src.getGradeToSign()), _gradeToExecute(src.getGradeToExecute()) {
     *this = src;
+	std::cout << "Form copy constructor called" << std::endl;
 }
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form() {}
+Form::~Form() {
+	std::cout << "Form destructor called" << std::endl;
+}
 
 /*
 ** --------------------------------- OVERLOAD ---------------------------------

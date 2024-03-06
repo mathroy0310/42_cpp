@@ -6,12 +6,12 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:08 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 23:15:42 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:31:11 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
@@ -67,12 +67,21 @@ void Bureaucrat::incrementGrade(void) {
     this->_grade--;
 }
 
-void Bureaucrat::signForm(Form &form) const {
+void Bureaucrat::signForm(AForm &form) const {
     try {
         form.beSigned(*this);
         std::cout << this->_name << " signs " << form.getName() << std::endl;
     } catch (std::exception &e) {
         std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
+
+void Bureaucrat::executeForm(AForm &form) const {
+    try {
+        form.execute(*this);
+        std::cout << this->_name << " executed " << form.getName() << std::endl;
+    } catch (std::exception &e) {
+        std::cout << this->_name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
     }
 }
 

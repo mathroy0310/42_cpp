@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 14:25:24 by maroy             #+#    #+#             */
+/*   Updated: 2024/03/06 14:25:40 by maroy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ROBOTOMYREQUESTFORM_HPP
 #define ROBOTOMYREQUESTFORM_HPP
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include <iostream>
 #include <string>
 
 class Bureaucrat;
-class Form;
+class AForm;
 
-class RobotomyRequestForm : public Form {
+class RobotomyRequestForm : public AForm {
   private:
     const std::string _target;
 

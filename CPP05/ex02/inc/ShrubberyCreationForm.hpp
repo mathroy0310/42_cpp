@@ -1,15 +1,15 @@
 #ifndef SHRUBBERYCREATIONFORM_HPP
 #define SHRUBBERYCREATIONFORM_HPP
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include <iostream>
 #include <string>
 
 class Bureaucrat;
-class Form;
+class AForm;
 
-class ShrubberyCreationForm : public Form {
+class ShrubberyCreationForm : public AForm {
 
   private:
     const std::string _target;

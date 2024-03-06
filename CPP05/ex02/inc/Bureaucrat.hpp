@@ -6,14 +6,14 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:10 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 23:46:04 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:31:05 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <exception>
 #include <iostream>
 #include <string>
@@ -25,7 +25,7 @@
 #define COLOR_RED "\x1b[31m"
 #define COLOR_CYAN "\x1b[36m"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
   private:
@@ -44,7 +44,8 @@ class Bureaucrat {
     void incrementGrade(void);
     void decrementGrade(void);
 
-    void signForm(Form &form) const;
+    void signForm(AForm &form) const;
+    void executeForm(AForm &form) const;
 
     class GradeTooHighException : public std::exception {
       public:

@@ -6,11 +6,15 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:24:22 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 23:15:42 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:30:19 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 void tests_bureaucrat(void) {
     // TEST over 150 grade
@@ -76,6 +80,108 @@ void tests_bureaucrat(void) {
         Bureaucrat b7(name, 140);
         Bureaucrat b8(b7);
         std::cout << b8 << std::endl;
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Presidential FAIL grade#" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloPresidential";
+        Bureaucrat b9(name, 140);
+        PresidentialPardonForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Robotomy FAIL grade#" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloRobotomy";
+        Bureaucrat b9(name, 140);
+        RobotomyRequestForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Shrubbery FAIL grade #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloShrubbery";
+        Bureaucrat b9(name, 140);
+        ShrubberyCreationForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Presidential FAIL signed #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloPresidential";
+        Bureaucrat b9(name, 1);
+        PresidentialPardonForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Robotomy FAIL signed #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloRobotomy";
+        Bureaucrat b9(name, 1);
+        RobotomyRequestForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Shrubbery FAIL signed #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloShrubbery";
+        Bureaucrat b9(name, 1);
+        ShrubberyCreationForm f10("f10");
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Presidential #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloPresidential";
+        Bureaucrat b9(name, 1);
+        PresidentialPardonForm f10("f10");
+        f10.beSigned(b9);
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Robotomy #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloRobotomy";
+        Bureaucrat b9(name, 1);
+        RobotomyRequestForm f10("f10");
+        f10.beSigned(b9);
+        b9.executeForm(f10);
+    } catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    std::cout << "-----------------------------------" << std::endl;
+
+    std::cout << COLOR_CYAN << "# TEST execute Shrubbery #" << COLOR_RESET << std::endl;
+    try {
+        std::string name = "alloShrubbery";
+        Bureaucrat b9(name, 1);
+        ShrubberyCreationForm f10("f10");
+        f10.beSigned(b9);
+        b9.executeForm(f10);
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
     }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   RobotomyRequestAForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 00:24:50 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 00:26:20 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/06 14:21:09 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,17 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45), _target("default") {
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("default") {
     std::cout << "RobotomyRequestForm default constructor called" << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("RobotomyRequestForm", 72, 45), _target(target) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target)
+    : AForm("RobotomyRequestForm", 72, 45), _target(target) {
     std::cout << "RobotomyRequestForm parameter constructor called" << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src)
-    : Form("RobotomyRequestForm", 72, 45), _target(src.getTarget()) {
+    : AForm("RobotomyRequestForm", 72, 45), _target(src.getTarget()) {
     std::cout << "RobotomyRequestForm copy constructor called" << std::endl;
 }
 
@@ -61,12 +62,12 @@ static int robot_failure = 0;
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
     if (this->getSigned() == false)
-        throw Form::FormAlreadySignedException();
+        throw AForm::FormNotSignedException();
     else if (executor.getGrade() > this->getGradeToExecute())
-        throw Form::GradeTooLowException();
+        throw AForm::GradeTooLowException();
     else if (robot_failure++ % 2 == 0)
-        std::cout << COLOR_BOLD << "BRRRRRRRRRRRRRR\n"
-                  << this->getTarget() << " has been robotomized successfully" << COLOR_RESET << std::endl;
+        std::cout << COLOR_BOLD << "BRRRRRRRRRRRRRR " << this->getTarget() << " has been robotomized successfully"
+                  << COLOR_RESET << std::endl;
     else
         std::cout << COLOR_BOLD << "Robotomization failed" << COLOR_RESET << std::endl;
 }

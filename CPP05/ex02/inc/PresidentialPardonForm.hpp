@@ -1,16 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/06 14:25:21 by maroy             #+#    #+#             */
+/*   Updated: 2024/03/06 14:25:43 by maroy            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
 #include <iostream>
 #include <string>
 
 class Bureaucrat;
 
-class Form;
+class AForm;
 
-class PresidentialPardonForm : public Form {
+class PresidentialPardonForm : public AForm {
   private:
     const std::string _target;
 

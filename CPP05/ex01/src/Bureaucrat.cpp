@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:08 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:11:05 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/09 17:26:02 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Bureaucrat::Bureaucrat(std::string name, unsigned int echelon) : _name(name) {
     std::cout << "Parametric constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) {
+Bureaucrat::Bureaucrat(const Bureaucrat &src): _name(src.getName() + "_copy") {
     *this = src;
     std::cout << "Copy constructor called" << std::endl;
 }

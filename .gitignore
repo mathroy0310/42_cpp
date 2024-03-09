@@ -4,3 +4,5 @@
 
 # Ignore directories created by build tools
 obj/
+*.shrubbery
+

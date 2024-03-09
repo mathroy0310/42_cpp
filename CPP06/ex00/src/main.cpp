@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 21:54:14 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 23:18:52 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/09 16:34:43 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int main(int argc, char **argv) {
 
 	
     if (argc != 2) {
-        std::cerr << "Wrong amount of arguments" << std::endl;
-        return 1;
+        std::cerr << COLOR_RED <<"Wong amount of arguments" << COLOR_RESET <<std::endl;
+        return (1);
     }
     try {
         ScalarConverter conv(argv[1]);
@@ -29,5 +29,5 @@ int main(int argc, char **argv) {
         std::cerr << e.what() << std::endl;
     }
 
-    return 0;
+    return (0);
 }

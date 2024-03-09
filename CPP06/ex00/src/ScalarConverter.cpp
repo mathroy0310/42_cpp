@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 21:59:14 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 23:18:28 by maroy            ###   ########.fr       */
+/*   Updated: 2024/03/09 17:09:27 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,25 @@ ScalarConverter &ScalarConverter::operator=(ScalarConverter const &rhs) {
 */
 
 int ScalarConverter::findType(void) {
-    if (this->getInput().compare("nan") == 0 || this->getInput().compare("+inf") == 0 ||
-        this->getInput().compare("-inf") == 0)
+    std::string input = this->getInput();
+    if (input.compare("nan") == 0 || input.compare("+inf") == 0 || input.compare("-inf") == 0)
         return (NAN_INF);
-    else if (this->getInput().length() == 1 && (this->getInput()[0] == '+' || this->getInput()[0] == '-' ||
-                                                this->getInput()[0] == 'f' || this->getInput()[0] == '.'))
+    else if (input.length() == 1 && (input[0] == '+' || input[0] == '-' || input[0] == 'f' || input[0] == '.'))
         return (CHAR);
-    else if (this->getInput().find_first_of("+-") != this->getInput().find_last_of("+-"))
+    else if (input.find_first_of("+-") != input.find_last_of("+-"))
         return (ERROR);
-    else if (this->getInput().find_first_not_of("+-0123456789") == std::string::npos)
+    else if (input.find_first_not_of("+-0123456789") == std::string::npos)
         return (INT);
-    else if ((this->getInput().length() == 1 && std::isprint(this->getInput()[0])) ||
-             (this->getInput().length() == 1 && std::isalpha(this->getInput()[0])))
+    else if ((input.length() == 1 && std::isprint(input[0])) || (input.length() == 1 && std::isalpha(input[0])))
         return (CHAR);
+    else if ((input.find_first_of(".") == input.find_last_of(".")) &&
+             (input.find_first_not_of("+-0123456789.") == std::string::npos) && (isdigit(input[input.find(".") + 1])))
+        return (DOUBLE);
+    else if ((input.find_first_of("f") == input.find_last_of("f")) &&
+             (input.find_first_not_of("+-0123456789.f") == std::string::npos) &&
+             (input.find("f") == input.length() - 1) && (input.find(".") != std::string::npos) &&
+             (isdigit(input[input.find("f") - 1])))
+        return (FLOAT);
     else
         return (ERROR);
 }
@@ -207,6 +213,7 @@ float ScalarConverter::getFloat(void) const {
 double ScalarConverter::getDouble(void) const {
     return this->_double;
 }
+
 /*
 ** ------------------------------- EXCEPTION ----------------------------------
 */

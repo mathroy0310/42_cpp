@@ -17,15 +17,15 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-AForm::AForm() : _name("Default"), _signed(false), _gradeToSign(GRADE_MAX / 2), _gradeToExecute(GRADE_MAX / 2) {
+AForm::AForm() : _name("Default"), _signed(false), _gradeToSign(GRADE_MIN / 2), _gradeToExecute(GRADE_MIN / 2) {
     std::cout << "AForm default constructor called" << std::endl;
 }
 
 AForm::AForm(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute)
     : _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
-    if (gradeToSign < GRADE_MIN || gradeToExecute < GRADE_MIN)
+    if (gradeToSign < GRADE_MAX || gradeToExecute < GRADE_MAX)
         throw AForm::GradeTooHighException();
-    else if (gradeToSign > GRADE_MAX || gradeToExecute > GRADE_MAX)
+    else if (gradeToSign > GRADE_MIN || gradeToExecute > GRADE_MIN)
         throw AForm::GradeTooLowException();
 
     std::cout << "AForm parameter constructor called" << std::endl;
@@ -57,9 +57,11 @@ AForm &AForm::operator=(AForm const &rhs) {
 }
 
 std::ostream &operator<<(std::ostream &o, AForm const *a) {
+	a->getSigned() ? o << COLOR_GREEN : o << COLOR_YELLOW;
     o << std::boolalpha << "AForm " << a->getName() << ":\n\tgrade-sign:\t" << a->getGradeToSign()
       << "\n\tgrade-exec:\t" << a->getGradeToExecute() << "\n\tis signed:\t" << a->getSigned() << std::endl;
-    return o;
+    o << COLOR_RESET;
+	return o;
 }
 
 /*

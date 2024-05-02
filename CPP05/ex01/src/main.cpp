@@ -6,11 +6,12 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:04 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 15:30:19 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/02 13:23:32 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void tests_bureaucrat(void);
 void tests_form(void);

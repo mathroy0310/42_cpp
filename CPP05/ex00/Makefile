@@ -6,11 +6,11 @@
 #    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2024/03/05 17:13:10 by maroy            ###   ########.fr        #
+#    Updated: 2024/05/02 13:03:29 by maroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00.out
+NAME = ex00
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 CC = c++

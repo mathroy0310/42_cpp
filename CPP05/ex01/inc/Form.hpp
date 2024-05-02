@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:13:09 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/05 16:13:59 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/02 13:31:07 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@
 #include <iostream>
 #include <string>
 
-#define ECHELON_MAX 150
-#define ECHELON_MIN 1
-
 #define COLOR_RESET "\x1b[0m"
 #define COLOR_RED "\x1b[31m"
 #define COLOR_CYAN "\x1b[36m"
 #define COLOR_GREEN "\x1b[32m"
+#define COLOR_YELLOW "\x1b[33m"
 
 class Bureaucrat;
 
@@ -36,13 +34,13 @@ class Form {
 
   public:
     Form();
-    Form(const std::string name, const unsigned int gradeToSign, const unsigned int gradeToExecute);
+    Form(const std::string name, const int gradeToSign, const int gradeToExecute);
     Form(Form const &src);
     ~Form();
 
     Form &operator=(Form const &rhs);
 
-    void signForm(Bureaucrat &bureaucrat);
+    void beSigned(const Bureaucrat &bureaucrat);
 
     const std::string getName(void) const;
     unsigned int getGradeToSign(void) const;

@@ -54,9 +54,11 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &r
 }
 
 std::ostream &operator<<(std::ostream &o, RobotomyRequestForm const &i) {
+	i.getSigned() ? o << COLOR_GREEN : o << COLOR_YELLOW;
     o << std::boolalpha << "Form " << i.getName() << ":\n\tgrade-sign:\t" << i.getGradeToSign() << "\n\tgrade-exec:\t"
       << i.getGradeToExecute() << "\n\tis signed:\t" << i.getSigned() << std::endl;
-    return (o);
+    o << COLOR_RESET;
+	return (o);
 }
 
 /*

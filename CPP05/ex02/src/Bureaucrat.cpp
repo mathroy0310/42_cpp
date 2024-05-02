@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:08 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/09 17:26:07 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/02 14:03:00 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat() : _name("Default"), _grade(GRADE_MAX / 2) {
+Bureaucrat::Bureaucrat() : _name("Default"), _grade(GRADE_MIN / 2) {
     std::cout << "Default constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, unsigned int grade) : _name(name) {
-    if (grade < GRADE_MIN)
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name) {
+    if (grade < GRADE_MAX)
         throw Bureaucrat::GradeTooHighException();
-    else if (grade > GRADE_MAX)
+    else if (grade > GRADE_MIN)
         throw Bureaucrat::GradeTooLowException();
     this->_grade = grade;
     std::cout << "Parametric constructor called" << std::endl;
@@ -56,14 +56,14 @@ unsigned int Bureaucrat::getGrade(void) const {
 }
 
 void Bureaucrat::decrementGrade(void) {
-    if (this->_grade == GRADE_MAX)
-        throw Bureaucrat::GradeTooHighException();
+    if (this->_grade == GRADE_MIN)
+        throw Bureaucrat::GradeTooLowException();
     this->_grade++;
 }
 
 void Bureaucrat::incrementGrade(void) {
-    if (this->_grade == GRADE_MIN)
-        throw Bureaucrat::GradeTooLowException();
+    if (this->_grade == GRADE_MAX)
+        throw Bureaucrat::GradeTooHighException();
     this->_grade--;
 }
 
@@ -72,7 +72,7 @@ void Bureaucrat::signForm(AForm &form) const {
         form.beSigned(*this);
         std::cout << this->_name << " signs " << form.getName() << std::endl;
     } catch (std::exception &e) {
-        std::cout << this->_name << " cannot sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << this->_name << " cannot sign " << form.getName() << " because\n" << e.what() << std::endl;
     }
 }
 
@@ -81,7 +81,7 @@ void Bureaucrat::executeForm(AForm &form) const {
         form.execute(*this);
         std::cout << this->_name << " executed " << form.getName() << std::endl;
     } catch (std::exception &e) {
-        std::cout << this->_name << " cannot execute " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << this->_name << " cannot execute " << form.getName() << " because\n" << e.what() << std::endl;
     }
 }
 

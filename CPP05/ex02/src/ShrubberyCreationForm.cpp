@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 00:10:02 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 14:28:46 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/02 14:01:49 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 }
 
 std::ostream &operator<<(std::ostream &o, ShrubberyCreationForm const &i) {
+	i.getSigned() ? o << COLOR_GREEN : o << COLOR_YELLOW;
     o << std::boolalpha << "Form " << i.getName() << ":\n\tgrade-sign:\t" << i.getGradeToSign() << "\n\tgrade-exec:\t"
       << i.getGradeToExecute() << "\n\tis signed:\t" << i.getSigned() << std::endl;
+	o << COLOR_RESET;
     return (o);
 }
 

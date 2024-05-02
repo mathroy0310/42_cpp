@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:10 by maroy             #+#    #+#             */
-/*   Updated: 2024/03/06 14:31:05 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/02 13:58:49 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include <iostream>
 #include <string>
 
-#define GRADE_MAX 150
-#define GRADE_MIN 1
+#define GRADE_MAX 1
+#define GRADE_MIN 150
 
 #define COLOR_RESET "\x1b[0m"
 #define COLOR_RED "\x1b[31m"
@@ -35,7 +35,7 @@ class Bureaucrat {
   public:
     Bureaucrat();
     Bureaucrat(Bureaucrat const &src);
-    Bureaucrat(std::string name, unsigned int grade);
+    Bureaucrat(std::string name, int grade);
     ~Bureaucrat();
 
     Bureaucrat &operator=(Bureaucrat const &rhs);

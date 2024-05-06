@@ -1,5 +1,8 @@
 {
 	"files.associations": {
+		"*.s": "asm-intel-x86-generic",
+		"*.asm": "asm-intel-x86-generic",
+		"*.tpp": "cpp",
 		"iostream": "cpp",
 		"iosfwd": "cpp",
 		"__bit_reference": "cpp",
@@ -72,7 +75,8 @@
 		"memory_resource": "cpp",
 		"numeric": "cpp",
 		"random": "cpp",
-		"numbers": "cpp"
+		"numbers": "cpp",
+		"cinttypes": "cpp"
 	},
 	"editor.formatOnSave": true
 }

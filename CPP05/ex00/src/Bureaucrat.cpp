@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:41:08 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/02 13:04:55 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/06 19:58:19 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ unsigned int Bureaucrat::getGrade(void) const {
 
 void Bureaucrat::decrementGrade(void) {
     if (this->_grade == ECHELON_MIN)
-        throw Bureaucrat::GradeTooHighException();
+        throw Bureaucrat::GradeTooLowException();
     this->_grade++;
 }
 
 void Bureaucrat::incrementGrade(void) {
     if (this->_grade == ECHELON_MAX)
-        throw Bureaucrat::GradeTooLowException();
+        throw Bureaucrat::GradeTooHighException();
     this->_grade--;
 }
 

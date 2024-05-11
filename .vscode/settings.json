@@ -76,7 +76,9 @@
 		"numeric": "cpp",
 		"random": "cpp",
 		"numbers": "cpp",
-		"cinttypes": "cpp"
+		"cinttypes": "cpp",
+		"list": "cpp",
+		"typeindex": "cpp"
 	},
 	"editor.formatOnSave": true
 }

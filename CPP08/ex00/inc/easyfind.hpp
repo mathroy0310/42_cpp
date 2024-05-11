@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:09:07 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/06 17:14:12 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/10 14:35:00 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <algorithm>
 #include <iostream>
+
+class NotFound : public std::exception {
+  public:
+    virtual const char *what() const throw() { return ("ERROR: Element not found"); };
+};
 
 template <typename T> void easyfind(T &container, int value);
 

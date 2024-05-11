@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 16:04:50 by rchahban          #+#    #+#             */
-/*   Updated: 2024/05/05 22:50:27 by maroy            ###   ########.fr       */
+/*   Updated: 2024/05/10 14:12:44 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,15 @@ int main(void) {
         }
         testArray(stringArr);
     }
-    PRINT('\n')
-
-	{
-		
-	}
-
+    PRINT('\n') {
+        Array<std::string> stringArr(15);
+        for (unsigned int i = 0; i < stringArr.size(); i++) {
+            std::stringstream ss;
+            ss << "big_string" << i;
+            stringArr[i] = ss.str();
+        }
+        testArray(stringArr);
+    }
 
     return (EXIT_SUCCESS);
 }

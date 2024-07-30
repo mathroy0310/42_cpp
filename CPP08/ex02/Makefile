@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
+#    By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2024/05/06 20:21:17 by maroy            ###   ########.fr        #
+#    Updated: 2024/07/30 13:16:27 by maroy            ###   ########.qc        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ex02
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g -fsanitize=address -I$(INC_DIR)
 CC = c++
 
 # Directories

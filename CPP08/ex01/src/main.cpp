@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:07:47 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/10 20:26:49 by maroy            ###   ########.fr       */
+/*   Updated: 2024/07/29 15:54:09 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void test_invalid_shortestSpan() {
     try {
         Span sp = Span(1);
         sp.addNumber(1);
+        PUT_DELIM
         PRINT("shortestSpan: " << sp.shortestSpan());
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -74,7 +75,7 @@ void test_invalid_longestSpan() {
     try {
         Span sp = Span(1);
         sp.addNumber(1);
-        PUT_DELIM;
+        PUT_DELIM
         PRINT("longestSpan: " << sp.longestSpan());
     } catch (std::exception &e) {
         std::cout << e.what() << std::endl;
@@ -85,8 +86,9 @@ void test_invalid_longestSpan() {
 void test_big_number() {
     PUT_HEADER("Test big number")
     try {
-        Span sp = Span(10000);
-        for (int i = 5000; i < 10000; i++) {
+        Span sp = Span(50000);
+        sp.addNumber(5);
+        for (int i = 1000; i < 40000; i++) {
             sp.addNumber(i);
         }
         PUT_DELIM;
@@ -115,7 +117,7 @@ void test_invalid_range() {
         Span sp = Span(1);
         sp.addRange(vec.begin(), vec.end());
         sp.showNumbers();
-		PUT_DELIM;
+        PUT_DELIM;
         PRINT("shortestSpan: " << sp.shortestSpan());
         PRINT("longestSpan: " << sp.longestSpan());
     } catch (std::exception &e) {
@@ -128,7 +130,6 @@ void test_valid_range() {
     PUT_HEADER("valid range")
     try {
         std::vector<int> vec;
-        vec.reserve(5);
         for (int i = 0; i < 5; i++) {
             vec.push_back(i);
         }

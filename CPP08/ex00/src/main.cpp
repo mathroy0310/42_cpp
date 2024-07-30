@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:07:47 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/10 14:37:45 by maroy            ###   ########.fr       */
+/*   Updated: 2024/07/29 15:22:30 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
-#include <typeinfo>
 #include <list>
+#include <typeinfo>
 #include <vector>
 
 #define PRINT(x) std::cout << std::boolalpha << x << std::endl;
@@ -24,59 +24,61 @@
 
 int main(void) {
 
-    int elem_to_find;
-    std::vector<int> vec(7, 5);
+    int nb_to_find;
+    std::vector<int> vec(7, 5);  // remplis vecteur de 7 fois valeur 5
     {
-        elem_to_find = 5;
+        nb_to_find = 5;
         PUT_HEADER(vec);
         PRINT("Container Size = " << vec.size())
-        PRINT("Elem to find: " << elem_to_find);
+        PRINT("Elem to find: " << nb_to_find);
         try {
-            easyfind(vec, 5);
+            easyfind(vec, nb_to_find);
         } catch (std::exception &e) {
-            std::cout << e.what() << ": " << elem_to_find << std::endl;
+            std::cout << e.what() << ": " << nb_to_find << std::endl;
         }
     }
-    {
-        elem_to_find = 6;
+    PRINT("\n") {
+        nb_to_find = 6;
         PUT_HEADER(vec);
         PRINT("Container Size = " << vec.size())
-        PRINT("Elem to find: " << elem_to_find);
+        PRINT("Elem to find: " << nb_to_find);
         try {
-            easyfind(vec, 6);
+            easyfind(vec, nb_to_find);
         } catch (std::exception &e) {
-            std::cout << e.what() << ": " << elem_to_find << std::endl;
+            std::cout << e.what() << ": " << nb_to_find << std::endl;
         }
     }
-    std::list<int> lst;
+    PRINT("\n")
+    std::list<int> lst;  // declare la liste vide
 
+    // ajoute des elements a la liste un a la fois
     lst.push_back(3);
     lst.push_back(45);
     lst.push_back(8);
     lst.push_back(12);
     lst.push_back(20);
     {
-        elem_to_find = 8;
+        nb_to_find = 8;
         PUT_HEADER(lst);
         PRINT("Container Size = " << lst.size())
-        PRINT("Elem to find: " << elem_to_find);
+        PRINT("Elem to find: " << nb_to_find);
         try {
-            easyfind(lst, elem_to_find);
+            easyfind(lst, nb_to_find);
         } catch (std::exception &e) {
-            std::cout << e.what() << ": " << elem_to_find << std::endl;
+            std::cout << e.what() << ": " << nb_to_find << std::endl;
         }
     }
-    {
-        elem_to_find = 18;
+    PRINT("\n") {
+        nb_to_find = 18;
         PUT_HEADER(lst);
         PRINT("Container Size = " << lst.size())
-        PRINT("Elem to find: " << elem_to_find);
+        PRINT("Elem to find: " << nb_to_find);
         try {
-            easyfind(lst, elem_to_find);
+            easyfind(lst, nb_to_find);
         } catch (std::exception &e) {
-            std::cout << e.what() << ": " << elem_to_find << std::endl;
+            std::cout << e.what() << ": " << nb_to_find << std::endl;
         }
     }
-
+    PRINT("\n")
     return 0;
 }

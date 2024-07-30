@@ -3,36 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 20:21:44 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/10 19:31:30 by maroy            ###   ########.fr       */
+/*   Updated: 2024/07/30 13:22:37 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
-#include <iostream>
 #include <stack>
+#include <iostream>
 
-template <typename T> class MutantStack : public std::stack<T> {
-
+class EmptyStack : public std::exception {
   public:
-    MutantStack() : std::stack<T>() { std::cout << "default Constructor Called" << std::endl; };
-    MutantStack(const MutantStack &src) : std::stack<T>(src){};
-    virtual ~MutantStack() { std::cout << "default Deconstructor Called" << std::endl; };
+    virtual const char *what() const throw() { return ("\x1b[31;1mERROR: Pop from empty stack\x1b[0m"); };
+};
 
-    MutantStack &operator=(const MutantStack &src) {
-        std::stack<T>::operator=(src);
-        return *this;
-    };
+template <typename T>
+class MutantStack : public std::stack<T> {
+public:
+    MutantStack();
+    MutantStack(const MutantStack &src);
+    virtual ~MutantStack();
+
+    MutantStack &operator=(const MutantStack &src);
 
     typedef typename std::stack<T>::container_type::iterator iterator;
 
-    iterator begin() { return std::stack<T>::c.begin(); };
+    iterator begin();
+    iterator end();
 
-    iterator end() { return std::stack<T>::c.end(); };
+    void pop();
+    void push(const T &val);
 };
 
-#endif  // MUTANTSTACK_HPP
+#include "MutantStack.tpp"
+
+#endif // MUTANTSTACK_HPP

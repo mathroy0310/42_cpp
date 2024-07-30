@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Span.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/10 19:42:19 by maroy             #+#    #+#             */
-/*   Updated: 2024/05/10 20:10:37 by maroy            ###   ########.fr       */
+/*   Updated: 2024/07/29 15:53:23 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,10 @@ int Span::shortestSpan() const {
     std::vector<int> tmp(this->_vec);
     std::sort(tmp.begin(), tmp.end());
     int min = tmp[1] - tmp[0];
-    for (size_t i = 0; i < tmp.size(); i++) {
-        if (tmp[i] - tmp[i - 1] < min)
-            min = tmp[i] - tmp[i - 1];
+    for (size_t i = 1; i < tmp.size(); i++) {
+        int span = tmp[i] - tmp[i - 1];
+        if (span < min)
+            min = span;
     }
     return min;
 }
@@ -70,4 +71,12 @@ void Span::showNumbers() const {
     // Show capacity and size
     std::cout << "capacity = " << this->_vec.capacity() << std::endl;
     std::cout << "size = " << this->_vec.size() << std::endl;
+}
+
+const char *Span::FullException::what() const throw() {
+    return (COLOR_RED "ERROR : Span is Full" COLOR_RESET);
+}
+
+const char *Span::NoSpanExecption::what() const throw() {
+    return (COLOR_RED "ERROR : No Span to find" COLOR_RESET);
 }

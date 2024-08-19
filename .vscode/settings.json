@@ -78,7 +78,9 @@
 		"numbers": "cpp",
 		"cinttypes": "cpp",
 		"list": "cpp",
-		"typeindex": "cpp"
+		"typeindex": "cpp",
+		"map": "cpp",
+		"__tree": "cpp"
 	},
 	"editor.formatOnSave": true
 }

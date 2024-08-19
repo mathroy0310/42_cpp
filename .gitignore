@@ -6,3 +6,5 @@
 obj/
 *.shrubbery
 
+.DS_Store
+.vscode/

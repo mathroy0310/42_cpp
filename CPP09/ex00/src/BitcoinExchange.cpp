@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 17:19:10 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/19 17:19:28 by maroy            ###   ########.qc       */
+/*   Updated: 2024/08/20 12:03:07 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static bool isValidDate(const std::string &date) {
 
 BitcoinExchange::BitcoinExchange() {
     // std::cout << "BitcoinExchange default constructor called" << std::endl;
-    getPrices();
+    this->getPrices();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other) {
@@ -98,7 +98,7 @@ void BitcoinExchange::processInput(const std::string &filename) {
 
     for (size_t line_nb = 2; std::getline(file, line); ++line_nb) {
         try {
-            processLine(line);
+            this->processLine(line);
         } catch (const std::exception &e) {
             std::cerr << "Error on line " << line_nb << ": " << e.what() << std::endl;
         }
@@ -133,7 +133,7 @@ void BitcoinExchange::processLine(const std::string &line) {
     if (value > 1000)
         throw std::runtime_error("Value too large (> 1000).");
 
-    printPrice(date, value);
+    this->printPrice(date, value);
 }
 
 void BitcoinExchange::getPrices() {
@@ -153,7 +153,7 @@ void BitcoinExchange::getPrices() {
         if (!std::getline(iss, date, ',') || !std::getline(iss, rate_str))
             throw std::runtime_error("Error: Invalid database entry format.");
 
-        if (!isValidDate(date))
+        if (!::isValidDate(date))
             throw std::runtime_error("Error: Invalid date in database: " + date);
 
         char *end;

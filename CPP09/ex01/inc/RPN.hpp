@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   RPN.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/20 12:11:44 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/20 12:11:44 by maroy            ###   ########.qc       */
+/*   Created: 2024/08/20 12:36:52 by maroy             #+#    #+#             */
+/*   Updated: 2024/08/20 13:43:04 by maroy            ###   ########.qc       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 
-#include "BitcoinExchange.hpp"
+#include <iostream>
+#include <ostream>
+#include <string>
+#include <stack>
 
-int main(int argc, char **argv) {
-    if (argc != 2) {
-        std::cerr << "Usage: ./ex00 [filename]" << std::endl;
-        return 1;
-    }
-    try {
-        BitcoinExchange exchange;
-        exchange.processInput(argv[1]);
-    } catch (const std::exception &e) {
-        std::cerr << e.what() << std::endl;
-        return 1;
-    }
-    return 0;
-}
+
+class RPN {
+
+  public:
+    RPN();
+    RPN(const RPN &other);
+    RPN &operator=(const RPN &copy);
+    ~RPN();
+    RPN(const std::string &arg);
+
+    private:
+        std::stack<int> _stack;      
+        
+         
+};

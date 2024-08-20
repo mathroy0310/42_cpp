@@ -6,13 +6,13 @@
 #    By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2024/08/20 12:11:41 by maroy            ###   ########.qc        #
+#    Updated: 2024/08/20 14:23:47 by maroy            ###   ########.qc        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = RPN
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g3 -I$(INC_DIR)
 CC = c++
 
 # Directories

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:29:36 by tmaillar          #+#    #+#             */
-/*   Updated: 2024/08/21 00:02:43 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/21 00:56:30 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void    PmergeMe::addInput(int argc, char **argv)
     double timer = sec * 1e6 + msec;
     timeInput = timer;
 }
+
+/* ************************************************************************** */
 
 void    PmergeMe::vectorMerge(int first, int mid, int second)
 {
@@ -151,6 +153,9 @@ void    PmergeMe::algoVector()
     double timer = sec * 1e6 + msec;
     timeVector = timer + timeInput;
 }
+
+
+/* ************************************************************************** */
 
 void     PmergeMe::dequeMerge(int first, int mid, int second)
 {

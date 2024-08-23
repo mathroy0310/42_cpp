@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
+#    By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2024/08/20 23:34:11 by maroy            ###   ########.fr        #
+#    Updated: 2024/08/23 13:18:04 by maroy            ###   ########.qc        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = PmergeMe
 
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -g -fsanitize=address -I$(INC_DIR)
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -O3 -fsanitize=address -I$(INC_DIR)
 CC = c++
 
 # Directories

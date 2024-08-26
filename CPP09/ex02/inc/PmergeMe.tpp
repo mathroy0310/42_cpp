@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 03:15:59 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/26 01:02:23 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/26 13:39:47 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void PmergeMe::createPairs(const Container &cont, std::vector<std::pair<int, int
 }
 
 template <typename Container> void PmergeMe::generateJacobsthalSequence(const Container &s, Container &jacobsthal) {
-    // 0, 1, 3, 15, 55, 231, 903, 3655, 14535, 58311,  ... (jacobsthal[n - 1] + 2 * jacobsthal[n - 2])
+    // 0, 1, 3, 15, 55, 231, 903, 3655, 14535, 58311,  ... J(n) = J(n-1) + 2 * J(n-2) for n > 1
     jacobsthal.push_back(0);
     jacobsthal.push_back(1);
     while (jacobsthal[jacobsthal.size() - 1] < static_cast<int>(s.size())) {

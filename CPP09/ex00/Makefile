@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+         #
+#    By: maroy <maroy@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/02 20:07:36 by maroy             #+#    #+#              #
-#    Updated: 2024/08/20 12:11:41 by maroy            ###   ########.qc        #
+#    Updated: 2024/08/26 01:11:31 by maroy            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex00
+NAME = BTC
 
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -I$(INC_DIR)
 CC = c++

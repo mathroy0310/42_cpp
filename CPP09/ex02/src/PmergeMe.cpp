@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:29:36 by tmaillar          #+#    #+#             */
-/*   Updated: 2024/08/23 14:28:55 by maroy            ###   ########.qc       */
+/*   Updated: 2024/08/26 00:52:49 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ PmergeMe::PmergeMe() {}
 
 PmergeMe::PmergeMe(int argc, char **argv) {
     this->_vect.reserve(argc - 1);  // Reserve memory for vector
-    this->_deque.resize(argc - 1);  // Reserve memory for _deque
-
     addInput(argc, argv);
 }
 
@@ -59,18 +57,22 @@ void PmergeMe::addInput(int argc, char **argv) {
         _deque.push_back(value);
     }
     gettimeofday(&end, 0);
-    long sec = end.tv_sec - begin.tv_sec;
-    long msec = end.tv_usec - begin.tv_usec;
-    double timer = sec * 1e6 + msec;
-    this->_time_input = timer;
+    this->_time_input = calculateTime(begin, end);
 }
+
 void PmergeMe::run() {
     std::cout << "Before: ";
     printContainer(this->_vect);
-    algoContainer(this->_vect, this->_time_vector);
-    algoContainer(this->_deque, this->_time_deque);
+    sort(this->_vect, this->_time_vector);
+    sort(this->_deque, this->_time_deque);
     std::cout << "After: ";
     printContainer(this->_deque);
     printInfo(this->_vect, "std::vector", this->_time_vector);
-    printInfo(this->_deque, "std::_deque", this->_time_deque);
+    printInfo(this->_deque, "std::deque", this->_time_deque);
+}
+
+double PmergeMe::calculateTime(const struct timeval &begin, const struct timeval &end) {
+    long sec = end.tv_sec - begin.tv_sec;
+    long msec = end.tv_usec - begin.tv_usec;
+    return sec * 1e6 + msec;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: maroy <maroy@student.42quebec.com>         +#+  +:+       +#+        */
+/*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 08:29:49 by tmaillar          #+#    #+#             */
-/*   Updated: 2024/08/23 14:28:26 by maroy            ###   ########.qc       */
+/*   Updated: 2024/08/26 00:29:17 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <climits>
 #include <cstdlib>
+#include <cstring>
 #include <deque>
 #include <iostream>
 #include <stdexcept>
@@ -31,17 +32,23 @@ class PmergeMe {
 
     void addInput(int argc, char **argv);
 
-    template <typename Container> void merge(Container &cont, int first, int mid, int second);
+    template <typename Container> void sort(Container &cont, double &time);
+    
+    template <typename Container>
+    void createPairs(const Container &cont, std::vector<std::pair<int, int> > &pairs, Container &s);
+    
+    template <typename Container> void generateJacobsthalSequence(const Container &s, Container &jacobsthal);
+    
+    template <typename Container>
+    typename Container::iterator binarySearch(Container &s, int value, typename Container::iterator begin, typename Container::iterator end);
 
-    template <typename Container> void mergeInsertionSort(Container &cont, int first, int second);
+    template <typename Container>
+    void insertSort(std::vector<std::pair<int, int> > &pairs, Container &s, const Container &jacobsthal);
 
-    template <typename Container> void insertionSort(Container &cont, int first, int last);
+    double calculateTime(const struct timeval &begin, const struct timeval &end);
 
-    template <typename Container> void algoContainer(Container &cont, double &time);
-
-    template <typename Container> void printContainer(Container &cont);
-
-    template <typename Container> void printInfo(Container &cont, std::string type, double time);
+    template <typename Container> void printContainer(Container &cont) const;
+    template <typename Container> void printInfo(Container &cont, std::string type, double time) const;
 
     PmergeMe();                                  // wont compile
     PmergeMe(const PmergeMe &other);             // wont compile

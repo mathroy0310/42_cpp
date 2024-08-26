@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 03:15:59 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/26 13:39:47 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/26 13:47:20 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ template <typename Container> void PmergeMe::generateJacobsthalSequence(const Co
 }
 
 template <typename Container>
-typename Container::iterator PmergeMe::binarySearch(Container &s, int value, typename Container::iterator begin, typename Container::iterator end) {
-    (void)s;    
+typename Container::iterator PmergeMe::binarySearch(Container &s, int value, typename Container::iterator begin,
+                                                    typename Container::iterator end) {
+    (void)s;
     while (begin < end) {
-        typename Container::iterator mid 
-            pair.first = pair.second;= begin + (end - begin) / 2;
-        
+        typename Container::iterator mid = begin + (end - begin) / 2;
+
         if (value < *mid)
             end = mid;
         else
@@ -86,10 +86,11 @@ void PmergeMe::insertSort(std::vector<std::pair<int, int> > &pairs, Container &s
     size_t inserted = 1;  // We start with 1 as the first element is already in place
     for (size_t i = 1; i < jacobsthal.size() && inserted < pairs.size(); ++i) {
         size_t curr = jacobsthal[i];
-        size_t prev = jacobsthal[i-1];
+        size_t prev = jacobsthal[i - 1];
         for (size_t j = curr; j > prev && j <= pairs.size(); --j) {
-            typename Container::iterator insertPos = binarySearch(s, pairs[j-1].second, s.begin(), s.begin() + inserted);
-            s.insert(insertPos, pairs[j-1].second);
+            typename Container::iterator insertPos =
+                binarySearch(s, pairs[j - 1].second, s.begin(), s.begin() + inserted);
+            s.insert(insertPos, pairs[j - 1].second);
             inserted++;
         }
     }
@@ -111,19 +112,5 @@ template <typename Container> void PmergeMe::printInfo(Container &cont, std::str
     std::cout << "Time to process a range of " << cont.size() << " elements with " << type << " : ";
     std::cout << std::fixed;
     std::cout.precision(3);
-
-    std::string unit;
-    double displayTime;
-    if (time < 1e3) {
-        unit = " us";
-        displayTime = time;
-    } else if (time < 1e6) {
-        unit = " ms";
-        displayTime = time / 1e3;
-    } else {
-        unit = " s";
-        displayTime = time / 1e6;
-    }
-
-    std::cout << displayTime << unit << std::endl;
+    std::cout << time << " us" << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:36:52 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/20 23:08:08 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/27 22:49:41 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class RPN {
   public:
     RPN(const std::string &arg);
     ~RPN();
-    void handleDigit(const std::string &arg, size_t &i);
+    void handleDigit(char digit);
     void handleOperator(char op);
 
   private:

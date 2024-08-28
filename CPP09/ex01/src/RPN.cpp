@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 12:48:21 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/20 23:08:29 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/27 22:51:23 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ RPN::RPN(const std::string &arg) {
             break;
         }
         if (isdigit(arg[i])) {
-            handleDigit(arg, i);
+            handleDigit(arg[i]);
         } else if (::isOP(arg[i])) {
             handleOperator(arg[i]);
         } else {
@@ -40,18 +40,17 @@ RPN::RPN(const std::string &arg) {
         i++;
     }
 
-    if (!_stack.empty()) {
+    if (_stack.size() > 1) {
+        throw std::invalid_argument("Invalid expression: missing operator");
+    } else if (!_stack.empty()) {
         std::cout << _stack.top() << std::endl;
     } else {
         throw std::invalid_argument("Invalid expression: empty stack");
     }
 }
 
-void RPN::handleDigit(const std::string &arg, size_t &i) {
-    if (i + 1 < arg.length() && isdigit(arg[i + 1])) {
-        throw std::invalid_argument("Invalid expression: only 0-9");
-    }
-    _stack.push(arg[i] - '0');
+void RPN::handleDigit(char digit) {
+    _stack.push(digit - '0');
 }
 
 void RPN::handleOperator(char op) {

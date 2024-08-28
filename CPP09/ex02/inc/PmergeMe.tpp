@@ -6,7 +6,7 @@
 /*   By: maroy <maroy@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/22 03:15:59 by maroy             #+#    #+#             */
-/*   Updated: 2024/08/26 13:47:20 by maroy            ###   ########.fr       */
+/*   Updated: 2024/08/27 22:47:20 by maroy            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ template <typename Container> void PmergeMe::sort(Container &cont, double &time)
     struct timeval begin, end;
     gettimeofday(&begin, 0);
 
-    std::vector<std::pair<int, int> > pairs;
-    Container s;
+    std::vector<std::pair<int, int>> pairs;
+    Container s;  // bigger nums of each pair + last if uneven
     Container jacobsthal;
 
     createPairs(cont, pairs, s);
     std::sort(s.begin(), s.end());
-    this->printContainer(s);
+    // this->printContainer(s);
     generateJacobsthalSequence(s, jacobsthal);
     insertSort(pairs, s, jacobsthal);
 
@@ -36,24 +36,16 @@ template <typename Container> void PmergeMe::sort(Container &cont, double &time)
 }
 
 template <typename Container>
-void PmergeMe::createPairs(const Container &cont, std::vector<std::pair<int, int> > &pairs, Container &s) {
-    size_t i;
-    for (i = 0; i + 1 < cont.size(); i += 2) {
-        std::pair<int, int> pair;
-        pair.first = cont[i];
-        pair.second = cont[i + 1];
-
-        if (pair.first < pair.second) {
-            // mon propre swap plus rapide que std::swap environ 10 us
-            int temp = pair.first;
-            pair.first = pair.second;
-            pair.second = temp;
-        }
-        pairs.push_back(pair);
-        s.push_back(pair.first);
-    }
-    if (i < cont.size()) {
-        s.push_back(cont[i]);
+void PmergeMe::createPairs(const Container &cont, std::vector<std::pair<int, int>> &pairs, Container &s) {
+    for (size_t i = 0; i < cont.size(); i += 2) {
+        if (i + 1 < cont.size()) {
+            std::pair<int, int> p = std::make_pair(cont[i], cont[i + 1]);
+            if (p.first < p.second)
+                std::swap(p.first, p.second);  // sort the pair
+            pairs.push_back(p);
+            s.push_back(p.first);  // append the bigger
+        } else
+            s.push_back(cont.back());
     }
 }
 
@@ -61,9 +53,8 @@ template <typename Container> void PmergeMe::generateJacobsthalSequence(const Co
     // 0, 1, 3, 15, 55, 231, 903, 3655, 14535, 58311,  ... J(n) = J(n-1) + 2 * J(n-2) for n > 1
     jacobsthal.push_back(0);
     jacobsthal.push_back(1);
-    while (jacobsthal[jacobsthal.size() - 1] < static_cast<int>(s.size())) {
+    while (jacobsthal.back() < static_cast<int>(s.size()))
         jacobsthal.push_back(jacobsthal[jacobsthal.size() - 1] + 2 * jacobsthal[jacobsthal.size() - 2]);
-    }
 }
 
 template <typename Container>
@@ -82,22 +73,29 @@ typename Container::iterator PmergeMe::binarySearch(Container &s, int value, typ
 }
 
 template <typename Container>
-void PmergeMe::insertSort(std::vector<std::pair<int, int> > &pairs, Container &s, const Container &jacobsthal) {
-    size_t inserted = 1;  // We start with 1 as the first element is already in place
-    for (size_t i = 1; i < jacobsthal.size() && inserted < pairs.size(); ++i) {
-        size_t curr = jacobsthal[i];
-        size_t prev = jacobsthal[i - 1];
-        for (size_t j = curr; j > prev && j <= pairs.size(); --j) {
-            typename Container::iterator insertPos =
-                binarySearch(s, pairs[j - 1].second, s.begin(), s.begin() + inserted);
-            s.insert(insertPos, pairs[j - 1].second);
-            inserted++;
+void PmergeMe::insertSort(std::vector<std::pair<int, int>> &pairs, Container &s, const Container &jacobsthal) {
+    for (size_t i = 0; i < pairs.size(); i++) {
+        for (size_t j = 0; j < jacobsthal.size(); j++) {
+            int k = jacobsthal[j];
+            if (k >= static_cast<int>(s.size()))
+                k = s.size() - 1;
+            if (pairs[i].second < s[k]) {
+                // Use binary search to find the insertion point
+                typename Container::iterator insertPos = binarySearch(s, pairs[i].second, s.begin(), s.begin() + k + 1);
+                s.insert(insertPos, pairs[i].second);
+                break;
+            }
+            if (j == jacobsthal.size() - 1 || k == static_cast<int>(s.size()) - 1) {
+                if (pairs[i].second > s.back()) {
+                    s.push_back(pairs[i].second);
+                } else {
+                    // Use binary search to find the insertion point in the entire container
+                    typename Container::iterator insertPos = binarySearch(s, pairs[i].second, s.begin(), s.end());
+                    s.insert(insertPos, pairs[i].second);
+                }
+                break;
+            }
         }
-    }
-    // Insert any remaining elements
-    for (size_t i = inserted; i < pairs.size(); ++i) {
-        typename Container::iterator insertPos = binarySearch(s, pairs[i].second, s.begin(), s.end());
-        s.insert(insertPos, pairs[i].second);
     }
 }
 
